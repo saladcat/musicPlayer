@@ -53,6 +53,7 @@ __published:	// IDE-managed Components
         TGroupBox *grp_Playig;
         TProgressBar *ProgressBar1;
     TOpenDialog *diaLoadMs;
+    TEdit *Edit1;
     void __fastcall btn_LoveMsClick(TObject *Sender);
 private:	// User declarations
     map<AnsiString,int> cntMusic;

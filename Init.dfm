@@ -181,6 +181,14 @@ object Form1: TForm1
     Height = 109
     Caption = 'grp_PreMs'
     TabOrder = 5
+    object Edit1: TEdit
+      Left = 176
+      Top = 32
+      Width = 145
+      Height = 24
+      TabOrder = 0
+      Text = 'Edit1'
+    end
   end
   object grp_Search: TGroupBox
     Left = 236

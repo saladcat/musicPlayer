@@ -23,14 +23,12 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 void __fastcall TForm1::btn_LoveMsClick(TObject *Sender)
 {
-    diaLoadMs->Execute();
-    for (int i=0;i<diaLoadMs->Files->Count;i++){
-        AnsiString song = diaLoadMs->Files->Strings[i];
-        if (cntMusic[song] == 0){
-            Form2->playListBox->Items->Add(takeFileName(song));
-            cntMusic[song]++;
-            fileName2PathName[takeFileName(song)] = song;
-        }
+    if (grp_PreMs->Visible ==true){
+        grp_SongList->Visible = true;
+        grp_PreMs->Visible = false;
+    }else{
+        grp_SongList->Visible = false;
+        grp_PreMs->Visible = true;
     }
 }
 //---------------------------------------------------------------------------
@@ -89,10 +87,10 @@ void __fastcall TForm1::lrcTimerTimer(TObject *Sender)
             Form3->lrcList->Lines->Add(musicLrc->lrc[musicLrc->index].text);
             musicLrc->index++;
         }
-        if (MediaPlayer->Position>=MediaPlayer->Length){
-              lrcTimer->Enabled=false;
-              musicLrc->index=0;
-        }
+    }
+    if (MediaPlayer->Position>=MediaPlayer->Length){
+        lrcTimer->Enabled=false;
+        musicLrc->index=0;
     }
 }
 //---------------------------------------------------------------------------
@@ -199,4 +197,78 @@ void __fastcall TForm1::btn_PreClick(TObject *Sender)
     playMusic(pathName);
 }
 //---------------------------------------------------------------------------
+
+
+
+
+
+void __fastcall TForm1::btn_refreshClick(TObject *Sender)
+{
+    /*
+    songListTable->TitleCaptions->Strings[0]="名称";
+    songListTable->TitleCaptions->Strings[1]="属性";
+    songListTable->InsertRow("地址","地球上的中国",true);
+    songListTable->ItemProps["地址"]->EditStyle=esEllipsis;
+    songListTable->Refresh();//这一句非常重要，它强制控件立即刷新，否则我们不能马上看见改动后的标题。
+    */
+    songListTable->InsertRow("出生年月","1982",true);
+    songListTable->ItemProps["出生年月"]->EditStyle=esPickList;
+    songListTable->ItemProps["出生年月"]->PickList->Add("1982");
+    songListTable->ItemProps["出生年月"]->PickList->Add("1983");
+    songListTable->ItemProps["出生年月"]->PickList->Add("1984");
+    songListTable->ItemProps["出生年月"]->PickList->Add("1985");
+    songListTable->ItemProps["出生年月"]->ReadOnly=true;
+}
+//---------------------------------------------------------------------------
+
+
+
+
+void __fastcall TForm1::songListTableEditButtonClick(TObject *Sender)
+{
+    //dsdsa
+     AnsiString strAddress=songListTable->Values[songListTable->Keys[songListTable->Row]];
+     ShowMessage("欢迎您，来自"+strAddress+"的朋友!");
+
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+void __fastcall TForm1::TrackBarChange(TObject *Sender)
+{
+    int volume = TrackBar->Position* TrackBar->Position *(65535/100);
+    waveOutSetVolume(0,MAKELONG(volume,volume));
+}
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::volumeBarMouseMove(TObject *Sender,
+      TShiftState Shift, int X, int Y){
+      int startX=10;
+      int endX=20;
+    if(Shift.Contains(ssLeft)){
+        int moveX=X;
+        volumeBar->Left += moveX;
+        if (volumeBar->Left < 10*startX){
+            volumeBar->Left=10*startX;
+        }else if (volumeBar->Left>10*endX){
+            volumeBar->Left=10*endX;
+        }
+
+        Label1->Caption = volumeBar->Left;
+        TrackBar->Position = (volumeBar->Left-startX)/(endX-startX);
+    }
+}
+//---------------------------------------------------------------------------
+
+
+
 

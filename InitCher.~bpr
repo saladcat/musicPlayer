@@ -4,15 +4,16 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="InitCher.exe"/>
-    <OBJFILES value="InitCher.obj Init.obj"/>
+    <OBJFILES value="InitCher.obj Init.obj SongList.obj Song.obj musicHelper.obj LrcHelper.obj 
+      PlayList.obj LrcWin.obj"/>
     <RESFILES value="InitCher.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
-    <RESDEPEN value="$(RESFILES) Init.dfm"/>
+    <RESDEPEN value="$(RESFILES) Init.dfm PlayList.dfm LrcWin.dfm"/>
     <LIBFILES value=""/>
     <LIBRARIES value=""/>
-    <SPARELIBS value="vcl.lib rtl.lib"/>
+    <SPARELIBS value="vcl.lib rtl.lib vclx.lib"/>
     <PACKAGES value="vcl.bpi rtl.bpi dbrtl.bpi adortl.bpi vcldb.bpi vclx.bpi bdertl.bpi 
       vcldbx.bpi ibxpress.bpi dsnap.bpi cds.bpi bdecds.bpi qrpt.bpi teeui.bpi 
       teedb.bpi tee.bpi dss.bpi teeqr.bpi visualclx.bpi visualdbclx.bpi 
@@ -57,6 +58,12 @@
       <FILE FILENAME="InitCher.res" FORMNAME="" UNITNAME="InitCher.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="InitCher.cpp" FORMNAME="" UNITNAME="InitCher" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Init.cpp" FORMNAME="Form1" UNITNAME="Init" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="SongList.cpp" FORMNAME="" UNITNAME="SongList" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Song.cpp" FORMNAME="" UNITNAME="Song" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="musicHelper.cpp" FORMNAME="" UNITNAME="musicHelper" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="LrcHelper.cpp" FORMNAME="" UNITNAME="LrcHelper" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="PlayList.cpp" FORMNAME="Form2" UNITNAME="PlayList" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="LrcWin.cpp" FORMNAME="Form3" UNITNAME="LrcWin" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

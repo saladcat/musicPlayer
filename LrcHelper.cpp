@@ -5,8 +5,8 @@
 
 #include "LrcHelper.h"
 #include "musicHelper.h"
+#include "LrcWin.h"
 //---------------------------------------------------------------------------
-
 #pragma package(smart_init)
 vector<AnsiString> sepString(AnsiString str) {
     vector<AnsiString> res;
@@ -25,10 +25,18 @@ vector<AnsiString> sepString(AnsiString str) {
     res.push_back(str.SubString(rPos + 1, str.Length() - rPos));
     return res;
 }
-
+LrcHelper::~LrcHelper(){
+    lastTimer->Enabled=false;
+}
 LrcHelper::LrcHelper(AnsiString pathName) {
-    _index=0;
+    index=0;
     ifstream is(pathName.c_str());
+    if (!is){
+        isFileExist=false;
+        return;
+    }else{
+        isFileExist=true;
+    }
     AnsiString line;
     string tem;
     while (getline(is, tem)) {
@@ -55,17 +63,22 @@ LrcHelper::LrcHelper(AnsiString pathName) {
             word *ptr = new word;
             ptr->text = text;
             ptr->time = total;
-            _lrc.push_back(*ptr);
+            lrc.push_back(*ptr);
         }
     }
 }
 
 void LrcHelper::prtLrc(TTimer* timer) {
-    timer->Enabled = true;
+    lastTimer= timer;
+    Form3->lrcList->Lines->Clear();
     setBeginTime();
+    if (isFileExist){
+        timer->Enabled = true;
+    }else{
+        Form3->lrcList->Lines->Add("there is no .LRC file");
+    }
 }
 void LrcHelper::setBeginTime(void){
-    clock_t begin = clock();
-    double nowTime = (clock() - begin) * 1.0 / CLOCKS_PER_SEC;
-    _beginTime = nowTime;
+    double nowTime = clock() * 1.0 / CLOCKS_PER_SEC;
+    beginTime = nowTime;
 }

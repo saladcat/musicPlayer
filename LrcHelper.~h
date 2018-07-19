@@ -26,21 +26,17 @@ vector<AnsiString> sepString(AnsiString str);
 class LrcHelper {
 public:
   LrcHelper(AnsiString pathName);
+  ~LrcHelper();
   AnsiString getFileName(void);
   void setBeginTime(void);
-  void setOffset(double offset);
   void prtLrc(TTimer* timer);
-  word getIndex(int index);
-  int getSize(void);
-  double getOffset(void);
-  double getBeginTime(void);
-private:
-  vector<word> _lrc;
-  int _index;
-  double _beginTime;
-  AnsiString _filePath;
-  double _offset;
-
+  vector<word> lrc;
+  int index;
+  double beginTime;
+  AnsiString filePath;
+  double offset;
+  bool isFileExist;
+  TTimer* lastTimer;
 };
 
 //---------------------------------------------------------------------------

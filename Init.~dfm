@@ -1,8 +1,9 @@
 object Form1: TForm1
-  Left = 519
-  Top = 295
-  Width = 979
+  Left = 2368
+  Top = 46
+  Width = 1162
   Height = 707
+  VertScrollBar.Position = 189
   Caption = 'Form1'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,7 +16,7 @@ object Form1: TForm1
   TextHeight = 16
   object grp_Self: TGroupBox
     Left = 39
-    Top = 108
+    Top = -81
     Width = 169
     Height = 317
     Caption = 'grp_Self'
@@ -64,7 +65,7 @@ object Form1: TForm1
   end
   object grp_MsList: TGroupBox
     Left = 39
-    Top = 453
+    Top = 264
     Width = 169
     Height = 218
     Caption = 'grp_MsList'
@@ -96,7 +97,7 @@ object Form1: TForm1
   end
   object btn_Figure: TButton
     Left = 39
-    Top = 20
+    Top = -169
     Width = 149
     Height = 60
     Caption = 'btn_Figure'
@@ -104,7 +105,7 @@ object Form1: TForm1
   end
   object grp_Init_MsList: TGroupBox
     Left = 236
-    Top = 207
+    Top = 18
     Width = 730
     Height = 464
     Caption = 'grp_Init_MsList'
@@ -144,7 +145,7 @@ object Form1: TForm1
   end
   object grp_ConWins: TGroupBox
     Left = 601
-    Top = 10
+    Top = -179
     Width = 365
     Height = 60
     Caption = 'grp_ConWins'
@@ -176,15 +177,23 @@ object Form1: TForm1
   end
   object grp_PreMs: TGroupBox
     Left = 236
-    Top = 89
+    Top = -92
     Width = 730
     Height = 109
     Caption = 'grp_PreMs'
     TabOrder = 5
+    object Edit1: TEdit
+      Left = 176
+      Top = 32
+      Width = 145
+      Height = 24
+      TabOrder = 0
+      Text = 'Edit1'
+    end
   end
   object grp_Search: TGroupBox
     Left = 236
-    Top = 10
+    Top = -179
     Width = 218
     Height = 60
     Caption = 'grp_Search'
@@ -208,7 +217,7 @@ object Form1: TForm1
   end
   object btn_DressTrans: TButton
     Left = 463
-    Top = 30
+    Top = -159
     Width = 129
     Height = 30
     Caption = 'btn_DressTrans'
@@ -216,7 +225,7 @@ object Form1: TForm1
   end
   object grp_MsCon: TGroupBox
     Left = 20
-    Top = 699
+    Top = 510
     Width = 346
     Height = 129
     Caption = 'grp_MsCon'
@@ -228,10 +237,11 @@ object Form1: TForm1
       Height = 30
       Caption = 'btn_Play'
       TabOrder = 0
+      OnClick = btn_PlayClick
     end
     object btn_Pause: TButton
       Left = 118
-      Top = 79
+      Top = 71
       Width = 80
       Height = 40
       Caption = 'btn_Pause'
@@ -256,11 +266,32 @@ object Form1: TForm1
   end
   object grp_Playig: TGroupBox
     Left = 404
-    Top = 699
+    Top = 510
     Width = 542
     Height = 129
     Caption = 'grp_Playig'
     TabOrder = 9
+    object playingSongName: TLabel
+      Left = 192
+      Top = 16
+      Width = 113
+      Height = 16
+      Caption = 'playingSongName'
+    end
+    object btn_openPlayList: TSpeedButton
+      Left = 456
+      Top = 56
+      Width = 25
+      Height = 25
+      OnClick = btn_openPlayListClick
+    end
+    object btn_openLrc: TSpeedButton
+      Left = 24
+      Top = 32
+      Width = 73
+      Height = 65
+      OnClick = btn_openLrcClick
+    end
     object ProgressBar1: TProgressBar
       Left = 128
       Top = 49
@@ -271,8 +302,23 @@ object Form1: TForm1
       TabOrder = 0
     end
   end
+  object MediaPlayer: TMediaPlayer
+    Left = 968
+    Top = 3
+    Width = 253
+    Height = 73
+    TabOrder = 10
+  end
   object diaLoadMs: TOpenDialog
+    Options = [ofHideReadOnly, ofAllowMultiSelect, ofEnableSizing]
     Left = 160
     Top = 136
+  end
+  object lrcTimer: TTimer
+    Enabled = False
+    Interval = 50
+    OnTimer = lrcTimerTimer
+    Left = 1032
+    Top = 280
   end
 end

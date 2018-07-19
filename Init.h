@@ -15,6 +15,8 @@
 #include "Song.h"
 #include "LrcHelper.h"
 #include <Dialogs.hpp>
+#include <MPlayer.hpp>
+#include <Buttons.hpp>
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
@@ -54,13 +56,24 @@ __published:	// IDE-managed Components
         TProgressBar *ProgressBar1;
     TOpenDialog *diaLoadMs;
     TEdit *Edit1;
+    TMediaPlayer *MediaPlayer;
+    TLabel *playingSongName;
+    TTimer *lrcTimer;
+    TSpeedButton *btn_openPlayList;
+    TSpeedButton *btn_openLrc;
     void __fastcall btn_LoveMsClick(TObject *Sender);
+    void __fastcall lrcTimerTimer(TObject *Sender);
+    void __fastcall btn_openPlayListClick(TObject *Sender);
+    void __fastcall btn_openLrcClick(TObject *Sender);
+    void __fastcall btn_PlayClick(TObject *Sender);
 private:	// User declarations
-    map<AnsiString,int> cntMusic;
-    map<AnsiString,AnsiString> fileName2PathName;
 
 public:		// User declarations
-        __fastcall TForm1(TComponent* Owner);
+    void playMusic(AnsiString pathName);
+    LrcHelper* musicLrc;
+    __fastcall TForm1(TComponent* Owner);
+        map<AnsiString,int> cntMusic;
+    map<AnsiString,AnsiString> fileName2PathName;
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm1 *Form1;

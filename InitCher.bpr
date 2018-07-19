@@ -4,12 +4,13 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="InitCher.exe"/>
-    <OBJFILES value="InitCher.obj Init.obj SongList.obj Song.obj musicHelper.obj LrcHelper.obj"/>
+    <OBJFILES value="InitCher.obj Init.obj SongList.obj Song.obj musicHelper.obj LrcHelper.obj 
+      PlayList.obj LrcWin.obj"/>
     <RESFILES value="InitCher.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
-    <RESDEPEN value="$(RESFILES) Init.dfm"/>
+    <RESDEPEN value="$(RESFILES) Init.dfm PlayList.dfm LrcWin.dfm"/>
     <LIBFILES value=""/>
     <LIBRARIES value=""/>
     <SPARELIBS value="vcl.lib rtl.lib vclx.lib"/>
@@ -61,6 +62,8 @@
       <FILE FILENAME="Song.cpp" FORMNAME="" UNITNAME="Song" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="musicHelper.cpp" FORMNAME="" UNITNAME="musicHelper" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="LrcHelper.cpp" FORMNAME="" UNITNAME="LrcHelper" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="PlayList.cpp" FORMNAME="Form2" UNITNAME="PlayList" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="LrcWin.cpp" FORMNAME="Form3" UNITNAME="LrcWin" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

@@ -1,0 +1,25 @@
+object Form3: TForm3
+  Left = 180
+  Top = 242
+  Width = 1305
+  Height = 675
+  Caption = 'Form3'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 120
+  TextHeight = 16
+  object lrcList: TMemo
+    Left = 384
+    Top = 152
+    Width = 401
+    Height = 217
+    Lines.Strings = (
+      'lrcList')
+    TabOrder = 0
+  end
+end

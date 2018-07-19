@@ -6,6 +6,7 @@
 #include "LrcHelper.h"
 #include "musicHelper.h"
 #include "LrcWin.h"
+#include "Init.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 vector<AnsiString> sepString(AnsiString str) {
@@ -29,8 +30,11 @@ LrcHelper::~LrcHelper(){
     lastTimer->Enabled=false;
 }
 LrcHelper::LrcHelper(AnsiString pathName) {
+    Form1->push_front(pathName);
+    filePath=pathName;
+    AnsiString lrcName = refMusic2Lrc(pathName);
     index=0;
-    ifstream is(pathName.c_str());
+    ifstream is(lrcName.c_str());
     if (!is){
         isFileExist=false;
         return;
@@ -72,8 +76,8 @@ void LrcHelper::prtLrc(TTimer* timer) {
     lastTimer= timer;
     Form3->lrcList->Lines->Clear();
     setBeginTime();
+    timer->Enabled = true;
     if (isFileExist){
-        timer->Enabled = true;
     }else{
         Form3->lrcList->Lines->Add("there is no .LRC file");
     }

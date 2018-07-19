@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 2263
-  Top = 85
+  Left = 2029
+  Top = 124
   Width = 1162
   Height = 707
   VertScrollBar.Position = 189
@@ -14,6 +14,12 @@ object Form1: TForm1
   OldCreateOrder = False
   PixelsPerInch = 120
   TextHeight = 16
+  object Image1: TImage
+    Left = 528
+    Top = 304
+    Width = 105
+    Height = 105
+  end
   object grp_Self: TGroupBox
     Left = 39
     Top = -81
@@ -40,9 +46,9 @@ object Form1: TForm1
     end
     object btn_MoodMs: TButton
       Left = 20
-      Top = 197
-      Width = 92
-      Height = 31
+      Top = 189
+      Width = 93
+      Height = 36
       Caption = 'btn_MoodMs'
       TabOrder = 2
     end
@@ -61,6 +67,7 @@ object Form1: TForm1
       Height = 31
       Caption = 'btn_LocalMs'
       TabOrder = 4
+      OnClick = btn_LocalMsClick
     end
   end
   object grp_MsList: TGroupBox
@@ -182,13 +189,29 @@ object Form1: TForm1
     Height = 109
     Caption = 'grp_PreMs'
     TabOrder = 5
-    object Edit1: TEdit
-      Left = 176
+    object btn_hisMs1: TSpeedButton
+      Left = 32
+      Top = 40
+      Width = 73
+      Height = 33
+    end
+    object btn_hisMs2: TSpeedButton
+      Left = 136
       Top = 32
-      Width = 145
-      Height = 24
-      TabOrder = 0
-      Text = 'Edit1'
+      Width = 129
+      Height = 49
+    end
+    object btn_hisMs3: TSpeedButton
+      Left = 304
+      Top = 24
+      Width = 161
+      Height = 65
+    end
+    object btn_hisMs4: TSpeedButton
+      Left = 520
+      Top = 16
+      Width = 193
+      Height = 81
     end
   end
   object grp_Search: TGroupBox
@@ -200,7 +223,7 @@ object Form1: TForm1
     TabOrder = 6
     object txt_Search: TEdit
       Left = 10
-      Top = 30
+      Top = 22
       Width = 90
       Height = 24
       TabOrder = 0
@@ -213,6 +236,7 @@ object Form1: TForm1
       Height = 30
       Caption = 'btn_Search'
       TabOrder = 1
+      OnClick = btn_SearchClick
     end
   end
   object btn_DressTrans: TButton
@@ -239,21 +263,14 @@ object Form1: TForm1
       TabOrder = 0
       OnClick = btn_PlayClick
     end
-    object btn_Pause: TButton
-      Left = 118
-      Top = 71
-      Width = 80
-      Height = 40
-      Caption = 'btn_Pause'
-      TabOrder = 1
-    end
     object btn_Next: TButton
-      Left = 217
-      Top = 20
+      Left = 209
+      Top = 28
       Width = 70
       Height = 40
       Caption = 'btn_Next'
-      TabOrder = 2
+      TabOrder = 1
+      OnClick = btn_NextClick
     end
     object btn_Pre: TButton
       Left = 10
@@ -261,7 +278,8 @@ object Form1: TForm1
       Width = 92
       Height = 30
       Caption = 'btn_Pre'
-      TabOrder = 3
+      TabOrder = 2
+      OnClick = btn_PreClick
     end
   end
   object grp_Playig: TGroupBox
@@ -292,6 +310,25 @@ object Form1: TForm1
       Height = 65
       OnClick = btn_openLrcClick
     end
+    object processBarbar: TImage
+      Left = 128
+      Top = 72
+      Width = 5
+      Height = 14
+      AutoSize = True
+      Picture.Data = {
+        07544269746D617016010000424D160100000000000036000000280000000500
+        00000E0000000100180000000000E0000000120B0000120B0000000000000000
+        00003B3228322B22322B22312A213C322800332D229E958C898073A0968C302B
+        2200312A217E756C5E55487C736A322B2200322B227069604E453B706960322B
+        2200302B22655D5641382E645C55322B22002F2A215B554E352F245B554E322B
+        2200302B2257514A312B2057514A322B2200302B225A544D352F245A544D312C
+        2300302B22625C553E382D625C55302B22002F2C246F685F51443C71685E2F2C
+        2400312A217D746A5D53497B756A322C2100332D22897F756D6157887E74332D
+        2200342B21A49B918F857BA39A90342B22003A3429322C21312A21302B223D34
+        2AFF}
+      OnMouseMove = processBarbarMouseMove
+    end
     object ProgressBar1: TProgressBar
       Left = 128
       Top = 49
@@ -311,8 +348,8 @@ object Form1: TForm1
   end
   object diaLoadMs: TOpenDialog
     Options = [ofHideReadOnly, ofAllowMultiSelect, ofEnableSizing]
-    Left = 160
-    Top = 8
+    Left = 168
+    Top = 80
   end
   object lrcTimer: TTimer
     Enabled = False

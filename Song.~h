@@ -2,5 +2,24 @@
 
 #ifndef SongH
 #define SongH
+#include "musicHelper.h"
+#define SAD 0
+#define GLAD 1
+#define SGIN 2
+
+
+class Song{
+public:
+    Song(AnsiString pathName);
+    ~Song();
+    AnsiString fileName;
+    AnsiString pathName;
+    vector<double> highLight;
+    vector<int> mood;
+    double offset;    
+private:
+
+};
+//---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
 #endif

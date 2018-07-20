@@ -7,6 +7,11 @@
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
+#include <Buttons.hpp>
+#include <ComCtrls.hpp>
+#include <ExtCtrls.hpp>
+#include <Graphics.hpp>
+#include <Menus.hpp>
 //---------------------------------------------------------------------------
 class TForm2 : public TForm
 {

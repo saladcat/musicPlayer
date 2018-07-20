@@ -8,3 +8,7 @@
 //---------------------------------------------------------------------------
 
 #pragma package(smart_init)
+
+Song::Song(AnsiString pathName) {
+    this->pathName=pathName;
+}

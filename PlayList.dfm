@@ -1,9 +1,9 @@
 object Form2: TForm2
-  Left = 1187
-  Top = 233
-  Width = 517
-  Height = 546
-  HorzScrollBar.Position = 246
+  Left = 2745
+  Top = 316
+  Width = 371
+  Height = 344
+  AutoSize = True
   Caption = 'Form2'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,10 +15,10 @@ object Form2: TForm2
   PixelsPerInch = 120
   TextHeight = 16
   object playListBox: TListBox
-    Left = 146
-    Top = 104
+    Left = 0
+    Top = 0
     Width = 353
-    Height = 305
+    Height = 297
     ItemHeight = 16
     TabOrder = 0
     OnDblClick = playListBoxDblClick

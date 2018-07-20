@@ -23,3 +23,16 @@ void __fastcall TForm2::playListBoxDblClick(TObject *Sender)
     Form1->playMusic(pathName);
 }
 //---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+

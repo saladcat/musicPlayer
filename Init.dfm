@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 2406
-  Top = 128
+  Left = 2234
+  Top = 112
   Width = 1381
   Height = 932
   Caption = 'Form1'
@@ -422,8 +422,9 @@ object Form1: TForm1
       Width = 393
       Height = 361
       Strings.Strings = (
-        #22810#22823#20107'='#22823#33832#36798)
+        '=')
       TabOrder = 0
+      OnEditButtonClick = songListTableEditButtonClick
       ColWidths = (
         241
         146)

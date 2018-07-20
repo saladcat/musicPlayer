@@ -204,20 +204,12 @@ void __fastcall TForm1::btn_PreClick(TObject *Sender)
 
 void __fastcall TForm1::btn_refreshClick(TObject *Sender)
 {
-    /*
-    songListTable->TitleCaptions->Strings[0]="名称";
-    songListTable->TitleCaptions->Strings[1]="属性";
-    songListTable->InsertRow("地址","地球上的中国",true);
-    songListTable->ItemProps["地址"]->EditStyle=esEllipsis;
+    songListTable->TitleCaptions->Strings[0]="歌名";
+    songListTable->TitleCaptions->Strings[1]="更多操作";
+    songListTable->InsertRow("qhc"," ",true);
+    songListTable->ItemProps["qhc"]->EditStyle=esEllipsis;
+    songListTable->ItemProps["qhc"]->ReadOnly=true;
     songListTable->Refresh();//这一句非常重要，它强制控件立即刷新，否则我们不能马上看见改动后的标题。
-    */
-    songListTable->InsertRow("出生年月","1982",true);
-    songListTable->ItemProps["出生年月"]->EditStyle=esPickList;
-    songListTable->ItemProps["出生年月"]->PickList->Add("1982");
-    songListTable->ItemProps["出生年月"]->PickList->Add("1983");
-    songListTable->ItemProps["出生年月"]->PickList->Add("1984");
-    songListTable->ItemProps["出生年月"]->PickList->Add("1985");
-    songListTable->ItemProps["出生年月"]->ReadOnly=true;
 }
 //---------------------------------------------------------------------------
 
@@ -226,10 +218,8 @@ void __fastcall TForm1::btn_refreshClick(TObject *Sender)
 
 void __fastcall TForm1::songListTableEditButtonClick(TObject *Sender)
 {
-    //dsdsa
-     AnsiString strAddress=songListTable->Values[songListTable->Keys[songListTable->Row]];
-     ShowMessage("欢迎您，来自"+strAddress+"的朋友!");
-
+    AnsiString playSong = songListTable->Keys[songListTable->Row];
+    playMusic(playSong);
 }
 //---------------------------------------------------------------------------
 
@@ -268,6 +258,8 @@ void __fastcall TForm1::volumeBarMouseMove(TObject *Sender,
     }
 }
 //---------------------------------------------------------------------------
+
+
 
 
 

@@ -156,6 +156,7 @@ public:		// User declarations
     bool alarmOn;
     double alarmEndTime;
     double alarmBeginTime;
+    vector<TLabel* > lrcWord;
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm1 *Form1;

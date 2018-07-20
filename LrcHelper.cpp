@@ -28,8 +28,10 @@ vector<AnsiString> sepString(AnsiString str) {
 }
 LrcHelper::~LrcHelper(){
     lastTimer->Enabled=false;
+
 }
 LrcHelper::LrcHelper(AnsiString pathName) {
+    offset=0;
     Form1->push_front(pathName);
     filePath=pathName;
     AnsiString lrcName = refMusic2Lrc(pathName);

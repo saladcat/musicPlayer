@@ -46,13 +46,13 @@ __published:	// IDE-managed Components
     TEdit *Edit1;
     TImage *Image1;
     TLabel *txt_SongName;
-    TLabel *Label2;
-    TLabel *Label3;
-    TLabel *Label4;
-    TLabel *Label5;
-    TLabel *Label6;
-    TLabel *Label7;
-    TLabel *Label8;
+    TLabel *lbl_lrc0;
+    TLabel *lbl_lrc1;
+    TLabel *lbl_lrc2;
+    TLabel *lbl_lrc3;
+    TLabel *lbl_lrc4;
+    TLabel *lbl_lrc5;
+    TLabel *lbl_lrc6;
     void __fastcall btn_backFormClick(TObject *Sender);
     void __fastcall btn_addMyFaClick(TObject *Sender);
 private:	// User declarations

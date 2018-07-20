@@ -1,8 +1,8 @@
 object Form3: TForm3
-  Left = 509
-  Top = 106
+  Left = 2090
+  Top = 68
   Width = 1305
-  Height = 886
+  Height = 697
   Caption = 'Form3'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -731,9 +731,9 @@ object Form3: TForm3
       D0DD84DD828A28A8333FFFD9}
   end
   object txt_SongName: TLabel
-    Left = 504
+    Left = 512
     Top = 96
-    Width = 140
+    Width = 433
     Height = 27
     Caption = 'txt_SongName'
     Font.Charset = ANSI_CHARSET
@@ -743,58 +743,107 @@ object Form3: TForm3
     Font.Style = []
     ParentFont = False
   end
-  object Label2: TLabel
-    Left = 928
-    Top = 144
-    Width = 185
-    Height = 25
-    Caption = 'Label2'
+  object lbl_lrc0: TLabel
+    Left = 512
+    Top = 136
+    Width = 433
+    Height = 27
+    AutoSize = False
+    Caption = 'lbl_lrc0'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'Microsoft YaHei UI'
+    Font.Style = []
+    ParentFont = False
   end
-  object Label3: TLabel
-    Left = 928
-    Top = 184
-    Width = 185
-    Height = 25
-    Caption = 'Label3'
+  object lbl_lrc1: TLabel
+    Left = 512
+    Top = 176
+    Width = 433
+    Height = 30
+    AutoSize = False
+    Caption = 'lbl_lrc1'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -23
+    Font.Name = 'Microsoft YaHei UI'
+    Font.Style = []
+    ParentFont = False
   end
-  object Label4: TLabel
-    Left = 920
-    Top = 232
-    Width = 193
-    Height = 25
-    Caption = 'Label4'
+  object lbl_lrc2: TLabel
+    Left = 512
+    Top = 224
+    Width = 433
+    Height = 32
+    AutoSize = False
+    Caption = 'lbl_lrc2'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -25
+    Font.Name = 'Microsoft YaHei UI'
+    Font.Style = []
+    ParentFont = False
   end
-  object Label5: TLabel
-    Left = 936
+  object lbl_lrc3: TLabel
+    Left = 512
     Top = 288
-    Width = 209
-    Height = 33
-    Caption = 'Label5'
+    Width = 433
+    Height = 36
+    AutoSize = False
+    Caption = 'lbl_lrc3'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -27
+    Font.Name = 'Microsoft YaHei UI'
+    Font.Style = [fsBold]
+    ParentFont = False
   end
-  object Label6: TLabel
-    Left = 928
-    Top = 352
-    Width = 225
-    Height = 33
-    Caption = 'Label6'
+  object lbl_lrc4: TLabel
+    Left = 512
+    Top = 368
+    Width = 433
+    Height = 32
+    AutoSize = False
+    Caption = 'lbl_lrc4'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -25
+    Font.Name = 'Microsoft YaHei UI'
+    Font.Style = []
+    ParentFont = False
   end
-  object Label7: TLabel
-    Left = 928
-    Top = 432
-    Width = 201
-    Height = 33
-    Caption = 'Label7'
+  object lbl_lrc5: TLabel
+    Left = 512
+    Top = 424
+    Width = 433
+    Height = 30
+    AutoSize = False
+    Caption = 'lbl_lrc5'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -23
+    Font.Name = 'Microsoft YaHei UI'
+    Font.Style = []
+    ParentFont = False
   end
-  object Label8: TLabel
-    Left = 928
-    Top = 504
-    Width = 185
-    Height = 41
-    Caption = 'Label8'
+  object lbl_lrc6: TLabel
+    Left = 512
+    Top = 496
+    Width = 433
+    Height = 27
+    AutoSize = False
+    Caption = 'lbl_lrc6'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'Microsoft YaHei UI'
+    Font.Style = []
+    ParentFont = False
   end
   object lrcList: TMemo
-    Left = 496
-    Top = 152
+    Left = 1096
+    Top = 184
     Width = 401
     Height = 393
     Lines.Strings = (
@@ -855,8 +904,8 @@ object Form3: TForm3
     TabOrder = 2
   end
   object btn_DressTrans: TButton
-    Left = 487
-    Top = 22
+    Left = 479
+    Top = 30
     Width = 129
     Height = 30
     Caption = 'btn_DressTrans'

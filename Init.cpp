@@ -15,7 +15,7 @@ TForm1 *Form1;
 __fastcall TForm1::TForm1(TComponent* Owner)
         : TForm(Owner),songListLabel(6),
         songListBtn(6),songListBtnFlag(6),songListPage(0),
-        alarmOn(false)
+        alarmOn(false),lrcWord(7)
 {
     listName2SongList["myFavorite"]= new SongList();
     listName2SongList["myFavorite"]->name="myFavorite";
@@ -33,6 +33,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
     songListBtn[3]=btn_song3;
     songListBtn[4]=btn_song4;
     songListBtn[5]=btn_song5;
+
 }
 //---------------------------------------------------------------------------
 
@@ -102,6 +103,20 @@ void __fastcall TForm1::lrcTimerTimer(TObject *Sender)
         if (lrcTime > musicLrc->lrc[musicLrc->index].time) {
             Form3->lrcList->Lines->Add(musicLrc->lrc[musicLrc->index].text);
             musicLrc->index++;
+        }
+        int index=-1;
+        for (int i=0;i < musicLrc->lrc.size();i++){
+            if (lrcTime <= musicLrc->lrc[i].time){
+                index=i-1;
+                break;
+            }
+        }
+        for (int i=0;i <7;i++){
+            if (index-3+i<0 || index-3+i>=musicLrc->lrc.size() ){
+                 lrcWord[i]->Caption = " ";
+            }else{
+                lrcWord[i]->Caption = musicLrc->lrc[index-3+i].text;
+            }
         }
     }
     if (MediaPlayer->Position>=MediaPlayer->Length){
@@ -308,6 +323,19 @@ void __fastcall TForm1::btn_CreMsListClick(TObject *Sender)
 
 void __fastcall TForm1::globle_timerTimer(TObject *Sender)
 {
+    //init Lrc pointer;
+    lrcWord[0]=Form3->lbl_lrc0;
+    lrcWord[1]=Form3->lbl_lrc1;
+    lrcWord[2]=Form3->lbl_lrc2;
+    lrcWord[3]=Form3->lbl_lrc3;
+    lrcWord[4]=Form3->lbl_lrc4;
+    lrcWord[5]=Form3->lbl_lrc5;
+    lrcWord[6]=Form3->lbl_lrc6;
+    for (int i=0;i<7;i++){
+        lrcWord[i]->Alignment = taCenter;
+        lrcWord[i]->Layout= tlCenter;
+    }
+    //end init
     //维护整体
     //msHistory=listName2SongList["msHistory"]->songs;
     // 定时关机

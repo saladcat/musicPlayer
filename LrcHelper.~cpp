@@ -28,6 +28,7 @@ vector<AnsiString> sepString(AnsiString str) {
 }
 LrcHelper::~LrcHelper(){
     lastTimer->Enabled=false;
+    offset=0;
 }
 LrcHelper::LrcHelper(AnsiString pathName) {
     Form1->push_front(pathName);
@@ -78,6 +79,7 @@ void LrcHelper::prtLrc(TTimer* timer) {
     setBeginTime();
     timer->Enabled = true;
     if (isFileExist){
+    
     }else{
         Form3->lrcList->Lines->Add("there is no .LRC file");
     }

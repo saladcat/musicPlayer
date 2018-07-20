@@ -219,7 +219,7 @@ void __fastcall TForm1::btn_refreshClick(TObject *Sender)
 void __fastcall TForm1::songListTableEditButtonClick(TObject *Sender)
 {
     AnsiString playSong = songListTable->Keys[songListTable->Row];
-    playMusic(playSong);
+    playMusic(fileName2PathName[playSong]);
 }
 //---------------------------------------------------------------------------
 

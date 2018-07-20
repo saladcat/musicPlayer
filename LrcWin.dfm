@@ -1,6 +1,6 @@
 object Form3: TForm3
-  Left = 2090
-  Top = 68
+  Left = 345
+  Top = 335
   Width = 1305
   Height = 697
   Caption = 'Form3'
@@ -733,7 +733,7 @@ object Form3: TForm3
   object txt_SongName: TLabel
     Left = 512
     Top = 96
-    Width = 433
+    Width = 140
     Height = 27
     Caption = 'txt_SongName'
     Font.Charset = ANSI_CHARSET

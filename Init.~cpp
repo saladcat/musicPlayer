@@ -335,6 +335,7 @@ void __fastcall TForm1::globle_timerTimer(TObject *Sender)
         lrcWord[i]->Alignment = taCenter;
         lrcWord[i]->Layout= tlCenter;
     }
+    //end init
     //维护整体
     //msHistory=listName2SongList["msHistory"]->songs;
     // 定时关机

@@ -1,6 +1,6 @@
 object Form2: TForm2
-  Left = 2637
-  Top = 367
+  Left = 637
+  Top = 349
   Width = 371
   Height = 344
   AutoSize = True

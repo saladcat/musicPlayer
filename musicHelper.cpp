@@ -5,7 +5,7 @@
 
 #include "musicHelper.h"
 //---------------------------------------------------------------------------
-
+#include "Init.h"
 #pragma package(smart_init)
 
 AnsiString takeFileName(AnsiString filePath){
@@ -43,6 +43,22 @@ AnsiString str2Ansi(string str){
 string ansi2Str(AnsiString str){
     string ret(str.c_str());
     return ret;
+}
+
+void push_song(AnsiString songListName,AnsiString pathName){
+    bool flag=false;
+    int index=0;
+    for (int i=0;i< Form1->listName2SongList[songListName]->songs.size();i++){
+        if (pathName==Form1->listName2SongList[songListName]->songs[i]){
+            flag=true;
+            index=i;
+        }
+    }
+    if (flag==true){
+        Form1->listName2SongList[songListName]->songs.erase(Form1->listName2SongList[songListName]->songs.begin()+index);
+    }
+    Form1->listName2SongList[songListName]->songs.push_back(pathName);
+
 }
 
 

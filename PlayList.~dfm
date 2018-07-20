@@ -1,6 +1,6 @@
 object Form2: TForm2
-  Left = 2637
-  Top = 367
+  Left = 2294
+  Top = 368
   Width = 371
   Height = 344
   AutoSize = True
@@ -20,7 +20,24 @@ object Form2: TForm2
     Width = 353
     Height = 297
     ItemHeight = 16
+    PopupMenu = PopupMenu1
     TabOrder = 0
     OnDblClick = playListBoxDblClick
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 208
+    Top = 104
+    object play: TMenuItem
+      Caption = 'play'
+      OnClick = playClick
+    end
+    object del: TMenuItem
+      Caption = 'del'
+      OnClick = delClick
+    end
+    object favorite: TMenuItem
+      Caption = 'favorite'
+      OnClick = favoriteClick
+    end
   end
 end

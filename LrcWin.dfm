@@ -3,6 +3,7 @@ object Form3: TForm3
   Top = 335
   Width = 1305
   Height = 697
+  VertScrollBar.Position = 181
   Caption = 'Form3'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,14 +16,14 @@ object Form3: TForm3
   TextHeight = 16
   object btn_backForm: TSpeedButton
     Left = 224
-    Top = 24
+    Top = -157
     Width = 41
     Height = 41
     OnClick = btn_backFormClick
   end
   object Image1: TImage
     Left = 48
-    Top = 136
+    Top = -45
     Width = 401
     Height = 409
     Picture.Data = {
@@ -732,7 +733,7 @@ object Form3: TForm3
   end
   object txt_SongName: TLabel
     Left = 512
-    Top = 96
+    Top = -85
     Width = 140
     Height = 27
     Caption = 'txt_SongName'
@@ -745,7 +746,7 @@ object Form3: TForm3
   end
   object lbl_lrc0: TLabel
     Left = 512
-    Top = 136
+    Top = -45
     Width = 433
     Height = 27
     AutoSize = False
@@ -759,7 +760,7 @@ object Form3: TForm3
   end
   object lbl_lrc1: TLabel
     Left = 512
-    Top = 176
+    Top = -5
     Width = 433
     Height = 30
     AutoSize = False
@@ -773,7 +774,7 @@ object Form3: TForm3
   end
   object lbl_lrc2: TLabel
     Left = 512
-    Top = 224
+    Top = 43
     Width = 433
     Height = 32
     AutoSize = False
@@ -787,7 +788,7 @@ object Form3: TForm3
   end
   object lbl_lrc3: TLabel
     Left = 512
-    Top = 288
+    Top = 107
     Width = 433
     Height = 36
     AutoSize = False
@@ -801,7 +802,7 @@ object Form3: TForm3
   end
   object lbl_lrc4: TLabel
     Left = 512
-    Top = 368
+    Top = 187
     Width = 433
     Height = 32
     AutoSize = False
@@ -815,7 +816,7 @@ object Form3: TForm3
   end
   object lbl_lrc5: TLabel
     Left = 512
-    Top = 424
+    Top = 243
     Width = 433
     Height = 30
     AutoSize = False
@@ -829,7 +830,7 @@ object Form3: TForm3
   end
   object lbl_lrc6: TLabel
     Left = 512
-    Top = 496
+    Top = 315
     Width = 433
     Height = 27
     AutoSize = False
@@ -843,7 +844,7 @@ object Form3: TForm3
   end
   object lrcList: TMemo
     Left = 1096
-    Top = 184
+    Top = 3
     Width = 401
     Height = 393
     Lines.Strings = (
@@ -852,7 +853,7 @@ object Form3: TForm3
   end
   object GroupBox1: TGroupBox
     Left = 40
-    Top = 576
+    Top = 395
     Width = 905
     Height = 105
     Caption = 'GroupBox1'
@@ -897,7 +898,7 @@ object Form3: TForm3
   end
   object btn_Figure: TButton
     Left = 47
-    Top = 12
+    Top = -169
     Width = 149
     Height = 60
     Caption = 'btn_Figure'
@@ -905,7 +906,7 @@ object Form3: TForm3
   end
   object btn_DressTrans: TButton
     Left = 479
-    Top = 30
+    Top = -151
     Width = 129
     Height = 30
     Caption = 'btn_DressTrans'
@@ -913,7 +914,7 @@ object Form3: TForm3
   end
   object grp_ConWins: TGroupBox
     Left = 648
-    Top = 10
+    Top = -171
     Width = 310
     Height = 60
     Caption = 'grp_ConWins'
@@ -937,7 +938,7 @@ object Form3: TForm3
   end
   object grp_Playig: TGroupBox
     Left = 412
-    Top = 681
+    Top = 500
     Width = 542
     Height = 129
     Caption = 'grp_Playig'
@@ -991,7 +992,7 @@ object Form3: TForm3
   end
   object grp_MsCon: TGroupBox
     Left = 28
-    Top = 681
+    Top = 500
     Width = 346
     Height = 129
     Caption = 'grp_MsCon'

@@ -27,13 +27,13 @@ void __fastcall TForm3::btn_backFormClick(TObject *Sender)
         Form1->Left=Form3->Left;
         Form1->Top=Form3->Top;
         Form3->Visible=false;
-    }    
+    }
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm3::btn_addMyFaClick(TObject *Sender)
 {
-    AnsiString nowPlayMusicPathName = Form1->MediaPlayer->FileName;
+    AnsiString nowPlayMusicPathName ;
     bool flag=false;
     int index=0;
     for (int i=0;i< Form1->listName2SongList["myFavorite"]->songs.size();i++){
@@ -49,6 +49,7 @@ void __fastcall TForm3::btn_addMyFaClick(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
+
 
 
 

@@ -13,6 +13,9 @@
 #include <Dialogs.hpp>
 #include <Graphics.hpp>
 #include <MPlayer.hpp>
+#include <CheckLst.hpp>
+#include <Grids.hpp>
+#include <ValEdit.hpp>
 
 #include <algorithm>
 #include "musicHelper.h"
@@ -71,6 +74,13 @@ __published:	// IDE-managed Components
     TSpeedButton *btn_hisMs2;
     TSpeedButton *btn_hisMs3;
     TSpeedButton *btn_hisMs4;
+    TGroupBox *grp_SongList;
+    TSpeedButton *btn_refresh;
+    TValueListEditor *songListTable;
+    TTrackBar *TrackBar;
+    TEdit *Edit1;
+    TImage *volumeBar;
+    TLabel *Label1;
     void __fastcall btn_LoveMsClick(TObject *Sender);
     void __fastcall lrcTimerTimer(TObject *Sender);
     void __fastcall btn_openPlayListClick(TObject *Sender);
@@ -82,6 +92,11 @@ __published:	// IDE-managed Components
     void __fastcall btn_LocalMsClick(TObject *Sender);
     void __fastcall btn_NextClick(TObject *Sender);
     void __fastcall btn_PreClick(TObject *Sender);
+    void __fastcall btn_refreshClick(TObject *Sender);
+    void __fastcall songListTableEditButtonClick(TObject *Sender);
+    void __fastcall TrackBarChange(TObject *Sender);
+    void __fastcall volumeBarMouseMove(TObject *Sender, TShiftState Shift,
+          int X, int Y);
 private:	// User declarations
 
 public:		// User declarations

@@ -30,7 +30,7 @@ LrcHelper::~LrcHelper(){
     lastTimer->Enabled=false;
 }
 LrcHelper::LrcHelper(AnsiString pathName) {
-    Form1->msHistory.push_front(pathName);
+    Form1->push_front(pathName);
     filePath=pathName;
     AnsiString lrcName = refMusic2Lrc(pathName);
     index=0;

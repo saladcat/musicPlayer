@@ -78,6 +78,7 @@ void LrcHelper::prtLrc(TTimer* timer) {
     setBeginTime();
     timer->Enabled = true;
     if (isFileExist){
+    
     }else{
         Form3->lrcList->Lines->Add("there is no .LRC file");
     }

@@ -45,6 +45,7 @@ __published:	// IDE-managed Components
     TTrackBar *TrackBar;
     TEdit *Edit1;
     TImage *Image1;
+    TLabel *txt_SongName;
     void __fastcall btn_backFormClick(TObject *Sender);
     void __fastcall btn_addMyFaClick(TObject *Sender);
 private:	// User declarations

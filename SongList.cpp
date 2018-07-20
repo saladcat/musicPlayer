@@ -10,7 +10,7 @@
 #pragma package(smart_init)
 
 SongList::SongList(){
-
+    name="";
 }
 
 int SongList::getIndex(AnsiString str){

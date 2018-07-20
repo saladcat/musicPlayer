@@ -20,4 +20,5 @@ int SongList::getIndex(AnsiString str){
             index=i;
         }
     }
+    return index;
 }

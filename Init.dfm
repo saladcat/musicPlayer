@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 2194
-  Top = 48
+  Left = 2138
+  Top = 0
   Width = 967
   Height = 857
   AutoSize = True
@@ -73,6 +73,7 @@ object Form1: TForm1
       Height = 31
       Caption = 'btn_AlarmMs'
       TabOrder = 3
+      OnClick = btn_AlarmMsClick
     end
     object btn_LocalMs: TButton
       Left = 20
@@ -91,29 +92,14 @@ object Form1: TForm1
     Height = 218
     Caption = 'grp_MsList'
     TabOrder = 1
-    object btn_MsList1: TButton
-      Left = 20
-      Top = 30
-      Width = 92
-      Height = 30
-      Caption = 'btn_MsList1'
+    object songListList: TListBox
+      Left = 8
+      Top = 24
+      Width = 145
+      Height = 185
+      ItemHeight = 16
       TabOrder = 0
-    end
-    object btn_MsList2: TButton
-      Left = 20
-      Top = 89
-      Width = 92
-      Height = 30
-      Caption = 'btn_MsList2'
-      TabOrder = 1
-    end
-    object btn_MsList3: TButton
-      Left = 20
-      Top = 148
-      Width = 92
-      Height = 30
-      Caption = 'btn_MsList3'
-      TabOrder = 2
+      OnDblClick = songListListDblClick
     end
   end
   object btn_Figure: TButton
@@ -259,7 +245,7 @@ object Form1: TForm1
   object grp_MsCon: TGroupBox
     Left = 0
     Top = 681
-    Width = 346
+    Width = 185
     Height = 129
     Caption = 'grp_MsCon'
     TabOrder = 8
@@ -290,18 +276,18 @@ object Form1: TForm1
       Caption = 'Label1'
     end
     object btn_Play: TButton
-      Left = 134
-      Top = 22
-      Width = 75
-      Height = 35
+      Left = 70
+      Top = 16
+      Width = 40
+      Height = 40
       Caption = 'btn_Play'
       TabOrder = 0
       OnClick = btn_PlayClick
     end
     object btn_Next: TButton
-      Left = 241
-      Top = 20
-      Width = 70
+      Left = 121
+      Top = 16
+      Width = 40
       Height = 40
       Caption = 'btn_Next'
       TabOrder = 1
@@ -309,16 +295,16 @@ object Form1: TForm1
     end
     object btn_Pre: TButton
       Left = 18
-      Top = 24
-      Width = 92
-      Height = 36
+      Top = 16
+      Width = 40
+      Height = 40
       Caption = 'btn_Pre'
       TabOrder = 2
       OnClick = btn_PreClick
     end
     object TrackBar: TTrackBar
-      Left = 216
-      Top = 80
+      Left = 24
+      Top = 72
       Width = 121
       Height = 25
       Orientation = trHorizontal
@@ -341,9 +327,9 @@ object Form1: TForm1
     end
   end
   object grp_Playig: TGroupBox
-    Left = 384
+    Left = 208
     Top = 681
-    Width = 565
+    Width = 737
     Height = 129
     Caption = 'grp_Playig'
     TabOrder = 9
@@ -355,7 +341,7 @@ object Form1: TForm1
       Caption = 'playingSongName'
     end
     object btn_openPlayList: TSpeedButton
-      Left = 456
+      Left = 680
       Top = 56
       Width = 25
       Height = 25
@@ -398,8 +384,8 @@ object Form1: TForm1
     end
   end
   object MediaPlayer: TMediaPlayer
-    Left = 36
-    Top = 630
+    Left = 260
+    Top = 614
     Width = 253
     Height = 73
     Visible = False
@@ -407,7 +393,7 @@ object Form1: TForm1
   end
   object grp_SongList: TGroupBox
     Left = 212
-    Top = 94
+    Top = 86
     Width = 737
     Height = 577
     Caption = 'grp_SongList'
@@ -422,8 +408,8 @@ object Form1: TForm1
     object lb_SongListName: TLabel
       Left = 184
       Top = 40
-      Width = 497
-      Height = 41
+      Width = 224
+      Height = 35
       Caption = 'lb_SongListName'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -457,6 +443,7 @@ object Form1: TForm1
       Top = 104
       Width = 89
       Height = 41
+      OnClick = btn_SongListSearchClick
     end
     object GroupBox1: TGroupBox
       Left = 200
@@ -540,7 +527,6 @@ object Form1: TForm1
         Top = 40
         Width = 25
         Height = 25
-        Caption = 's'
         OnClick = btn_song0Click
       end
       object lb_song5: TLabel
@@ -576,7 +562,7 @@ object Form1: TForm1
       Left = 464
       Top = 112
       Width = 113
-      Height = 25
+      Height = 24
       TabOrder = 1
       Text = 'txt_songListSearch'
     end
@@ -590,7 +576,7 @@ object Form1: TForm1
     Enabled = False
     Interval = 50
     OnTimer = lrcTimerTimer
-    Left = 56
+    Left = 96
     Top = 664
   end
   object globle_timer: TTimer

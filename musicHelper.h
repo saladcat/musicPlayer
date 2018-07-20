@@ -11,6 +11,7 @@
 #include <Dialogs.hpp>
 #include <ExtCtrls.hpp>
 
+#include <sstream>
 #include <iostream>
 #include <fstream>
 #include <map>

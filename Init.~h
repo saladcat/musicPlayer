@@ -38,9 +38,6 @@ __published:	// IDE-managed Components
         TButton *btn_AlarmMs;
         TButton *btn_LocalMs;
         TGroupBox *grp_MsList;
-        TButton *btn_MsList1;
-        TButton *btn_MsList2;
-        TButton *btn_MsList3;
         TButton *btn_Figure;
         TGroupBox *grp_Init_MsList;
         TButton *btn_CreMsList;
@@ -103,6 +100,7 @@ __published:	// IDE-managed Components
     TEdit *txt_songListSearch;
     TSpeedButton *btn_SongListSearch;
     TSpeedButton *btn_selctAll;
+    TListBox *songListList;
     void __fastcall btn_LoveMsClick(TObject *Sender);
     void __fastcall lrcTimerTimer(TObject *Sender);
     void __fastcall btn_openPlayListClick(TObject *Sender);
@@ -133,6 +131,9 @@ __published:	// IDE-managed Components
     void __fastcall btn_song3Click(TObject *Sender);
     void __fastcall btn_song4Click(TObject *Sender);
     void __fastcall btn_song5Click(TObject *Sender);
+    void __fastcall songListListDblClick(TObject *Sender);
+    void __fastcall btn_SongListSearchClick(TObject *Sender);
+    void __fastcall btn_AlarmMsClick(TObject *Sender);
 private:	// User declarations
 
 public:		// User declarations
@@ -152,6 +153,9 @@ public:		// User declarations
     vector<int> chosedMusic;
     AnsiString nowOpenListName;
     map<AnsiString,int> selectOn;
+    bool alarmOn;
+    double alarmEndTime;
+    double alarmBeginTime;
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm1 *Form1;

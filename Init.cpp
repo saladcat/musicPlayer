@@ -14,7 +14,8 @@ TForm1 *Form1;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
         : TForm(Owner),songListLabel(6),
-        songListBtn(6),songListBtnFlag(6),songListPage(0)
+        songListBtn(6),songListBtnFlag(6),songListPage(0),
+        alarmOn(false)
 {
     listName2SongList["myFavorite"]= new SongList();
     listName2SongList["myFavorite"]->name="myFavorite";
@@ -51,6 +52,7 @@ void __fastcall TForm1::btn_LoveMsClick(TObject *Sender)
         }else{
             grp_SongList->Visible = false;
             grp_PreMs->Visible = true;
+            selectOn.clear();
         }
     }
     nowOpenListName="myFavorite";
@@ -95,6 +97,7 @@ void __fastcall TForm1::lrcTimerTimer(TObject *Sender)
     int rightPos=128+287;
     int curPos=nowTime/songLength*(rightPos-leftPos)+leftPos;
     processBarbar->Left=curPos;
+    //播放歌词
     if (musicLrc->isFileExist){
         if (lrcTime > musicLrc->lrc[musicLrc->index].time) {
             Form3->lrcList->Lines->Add(musicLrc->lrc[musicLrc->index].text);
@@ -284,15 +287,14 @@ void __fastcall TForm1::rbtn_WinCloseClick(TObject *Sender)
 
 void __fastcall TForm1::btn_CreMsListClick(TObject *Sender)
 {
-    
+
     AnsiString songListName;
     InputQuery("提示：", "输入你的歌单名：", songListName);  // s是引用传入
     if (listName2SongList[songListName]==NULL){
+        listName2SongList[songListName]=new SongList();
+        listName2SongList[songListName]->name = songListName;
+        listName2SongList[songListName]->sortKey = "name";
         ShowMessage(songListName+"创建成功");
-        SongList *ptr= new SongList();
-        ptr->name = songListName;
-        ptr->sortKey = "name";
-        listName2SongList[songListName]=ptr;
     }else{
         ShowMessage("歌单名重复");
     }
@@ -308,6 +310,11 @@ void __fastcall TForm1::globle_timerTimer(TObject *Sender)
 {
     //维护整体
     //msHistory=listName2SongList["msHistory"]->songs;
+    // 定时关机
+    if (alarmOn && clock()/CLOCKS_PER_SEC > alarmEndTime){
+        this->Close();
+    }
+    // 定时关机结束
     btn_hisMs1->Caption=" ";
     btn_hisMs2->Caption=" ";
     btn_hisMs3->Caption=" ";
@@ -326,14 +333,31 @@ void __fastcall TForm1::globle_timerTimer(TObject *Sender)
     }
     lb_SongListName->Caption = nowOpenListName;
     for (int i=0;i<6;i++){
+        songListLabel[i]->Visible=false;
         songListLabel[i]->Caption="空   ";
+        songListBtn[i]->Visible=false;
+        btn_selctAll->Visible=false;
     }
     map<AnsiString,SongList*>::iterator item =listName2SongList.begin();
     while (item!=listName2SongList.end()){
-        if (item->second->name==nowOpenListName){
+        //输出所有歌单在songListList
+        bool isExsist=false;
+        for (int i=0;i<songListList->Count ;i++){
+            if (songListList->Items->Strings[i] ==item->first){
+                isExsist = true;
+            }
+        }
+        if (!isExsist){
+            songListList->Items->Add(item->first);
+        }
+        //结束输出
+        if (item->second->name==nowOpenListName){//找到打开的歌单
             for (int i=0;i<item->second->songs.size();i++){
                 if (6*songListPage<=i && i<6*songListPage+6){
+                    btn_selctAll->Visible=true;
+                    songListLabel[i%6]->Visible=true;
                     songListLabel[i%6]->Caption=takeFileName(item->second->songs[i]);
+                    songListBtn[i%6]->Visible=true;
                     songListBtn[i%6]->Caption = selectOn[item->second->songs[i]];
                 }
             }
@@ -349,6 +373,7 @@ void __fastcall TForm1::globle_timerTimer(TObject *Sender)
         }
         item++;
     }
+
 }
 //---------------------------------------------------------------------------
 
@@ -471,7 +496,7 @@ void __fastcall TForm1::btn_song1Click(TObject *Sender)
         selectOn[ptr->songs[songListPage*6+1]]--;
     }else{
         selectOn[ptr->songs[songListPage*6+1]]++;
-    }    
+    }
 }
 //---------------------------------------------------------------------------
 
@@ -489,6 +514,7 @@ void __fastcall TForm1::btn_song2Click(TObject *Sender)
 void __fastcall TForm1::btn_song3Click(TObject *Sender)
 {
     SongList* ptr = listName2SongList[nowOpenListName];
+
     if (selectOn[ptr->songs[songListPage*6+3]]>0){
         selectOn[ptr->songs[songListPage*6+3]]--;
     }else{
@@ -500,17 +526,23 @@ void __fastcall TForm1::btn_song3Click(TObject *Sender)
 void __fastcall TForm1::btn_song4Click(TObject *Sender)
 {
     SongList* ptr = listName2SongList[nowOpenListName];
+    if (ptr==NULL){
+        return;
+    }
     if (selectOn[ptr->songs[songListPage*6+4]]>0){
         selectOn[ptr->songs[songListPage*6+4]]--;
     }else{
         selectOn[ptr->songs[songListPage*6+4]]++;
-    }    
+    }
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::btn_song5Click(TObject *Sender)
 {
     SongList* ptr = listName2SongList[nowOpenListName];
+    if (ptr==NULL){
+        return;
+    }
     if (selectOn[ptr->songs[songListPage*6+5]]>0){
         selectOn[ptr->songs[songListPage*6+5]]--;
     }else{
@@ -518,4 +550,74 @@ void __fastcall TForm1::btn_song5Click(TObject *Sender)
     }
 }
 //---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+void __fastcall TForm1::songListListDblClick(TObject *Sender)
+{
+    int index = songListList->ItemIndex;
+    nowOpenListName = songListList->Items->Strings[index];
+    if (grp_SongList->Visible == false){
+        grp_SongList->Visible = true;
+        grp_PreMs->Visible = false;
+    }
+}
+//---------------------------------------------------------------------------
+
+
+
+
+void __fastcall TForm1::btn_SongListSearchClick(TObject *Sender)
+{
+    AnsiString searchStr = txt_songListSearch->Text;
+    SongList *ptr = listName2SongList[nowOpenListName];
+    int index=-1;
+    for (int i=0;i< ptr->songs.size();i++){
+        if (searchStr == takeFileName(ptr->songs[i])){
+            index = i;
+        }
+    }
+    if (index==-1){
+        ShowMessage((AnsiString)"Can't find "+searchStr+" in "+nowOpenListName);
+    }else{
+        songListPage=index/6;
+        selectOn[ptr->songs[index]]++;
+    }
+    
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::btn_AlarmMsClick(TObject *Sender)
+{
+    AnsiString inputStr;
+    if (alarmOn==false){
+        if (InputQuery("提示：", "设定在多少分钟后关闭播放器，例:60", inputStr)){
+            alarmBeginTime = clock()/CLOCKS_PER_SEC;
+            alarmEndTime = atof(inputStr.c_str())*60+alarmBeginTime;
+            alarmOn=true;
+        }
+    }else{
+        double nowTime = clock()/CLOCKS_PER_SEC;
+        double duringTime =(alarmEndTime-nowTime)/60;
+        ostringstream strs;
+        strs << duringTime;
+        string str = strs.str();
+        AnsiString duringTimeString = str.c_str();
+        if (InputQuery("提示：", "设定在"+ duringTimeString+"分钟后关闭播放器，请问要修改至多少分钟？则点击取消关闭闹钟", inputStr)) {
+            alarmBeginTime = clock()/CLOCKS_PER_SEC;
+            alarmEndTime = atof(inputStr.c_str())*60+alarmBeginTime;
+            alarmOn=true;
+        }else{
+            alarmOn=false;
+        }
+    }
+}
+//---------------------------------------------------------------------------
+
 

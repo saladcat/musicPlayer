@@ -1,5 +1,5 @@
 object Form3: TForm3
-  Left = 2197
+  Left = 2123
   Top = 71
   Width = 1305
   Height = 779
@@ -730,11 +730,24 @@ object Form3: TForm3
       D6A4A28023A28A29941451450014514500145145001451450014514500145151
       D0DD84DD828A28A8333FFFD9}
   end
+  object txt_SongName: TLabel
+    Left = 504
+    Top = 96
+    Width = 140
+    Height = 27
+    Caption = 'txt_SongName'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'Microsoft YaHei UI'
+    Font.Style = []
+    ParentFont = False
+  end
   object lrcList: TMemo
     Left = 496
-    Top = 112
+    Top = 152
     Width = 401
-    Height = 241
+    Height = 201
     Lines.Strings = (
       'lrcList')
     TabOrder = 0

@@ -1,8 +1,8 @@
 object Form3: TForm3
-  Left = 2197
-  Top = 71
+  Left = 509
+  Top = 106
   Width = 1305
-  Height = 779
+  Height = 886
   Caption = 'Form3'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,10 +21,10 @@ object Form3: TForm3
     OnClick = btn_backFormClick
   end
   object Image1: TImage
-    Left = 80
-    Top = 112
-    Width = 353
-    Height = 241
+    Left = 48
+    Top = 136
+    Width = 401
+    Height = 409
     Picture.Data = {
       0A544A504547496D616765BD570000FFD8FFE000104A46494600010101000100
       010000FFDB00430006040506050406060506070706080A100A0A09090A140E0F
@@ -743,19 +743,68 @@ object Form3: TForm3
     Font.Style = []
     ParentFont = False
   end
+  object Label2: TLabel
+    Left = 928
+    Top = 144
+    Width = 185
+    Height = 25
+    Caption = 'Label2'
+  end
+  object Label3: TLabel
+    Left = 928
+    Top = 184
+    Width = 185
+    Height = 25
+    Caption = 'Label3'
+  end
+  object Label4: TLabel
+    Left = 920
+    Top = 232
+    Width = 193
+    Height = 25
+    Caption = 'Label4'
+  end
+  object Label5: TLabel
+    Left = 936
+    Top = 288
+    Width = 209
+    Height = 33
+    Caption = 'Label5'
+  end
+  object Label6: TLabel
+    Left = 928
+    Top = 352
+    Width = 225
+    Height = 33
+    Caption = 'Label6'
+  end
+  object Label7: TLabel
+    Left = 928
+    Top = 432
+    Width = 201
+    Height = 33
+    Caption = 'Label7'
+  end
+  object Label8: TLabel
+    Left = 928
+    Top = 504
+    Width = 185
+    Height = 41
+    Caption = 'Label8'
+  end
   object lrcList: TMemo
     Left = 496
     Top = 152
     Width = 401
-    Height = 201
+    Height = 393
     Lines.Strings = (
       'lrcList')
     TabOrder = 0
   end
   object GroupBox1: TGroupBox
-    Left = 32
-    Top = 376
-    Width = 865
+    Left = 40
+    Top = 576
+    Width = 905
     Height = 105
     Caption = 'GroupBox1'
     TabOrder = 1
@@ -839,7 +888,7 @@ object Form3: TForm3
   end
   object grp_Playig: TGroupBox
     Left = 412
-    Top = 491
+    Top = 681
     Width = 542
     Height = 129
     Caption = 'grp_Playig'
@@ -893,7 +942,7 @@ object Form3: TForm3
   end
   object grp_MsCon: TGroupBox
     Left = 28
-    Top = 491
+    Top = 681
     Width = 346
     Height = 129
     Caption = 'grp_MsCon'

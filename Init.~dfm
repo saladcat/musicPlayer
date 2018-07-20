@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 2405
-  Top = 50
+  Left = 2406
+  Top = 128
   Width = 1381
   Height = 932
   Caption = 'Form1'
@@ -254,7 +254,7 @@ object Form1: TForm1
     Caption = 'grp_MsCon'
     TabOrder = 8
     object volumeBar: TImage
-      Left = 40
+      Left = 121
       Top = 96
       Width = 5
       Height = 14

@@ -252,19 +252,19 @@ void __fastcall TForm1::TrackBarChange(TObject *Sender)
 
 void __fastcall TForm1::volumeBarMouseMove(TObject *Sender,
       TShiftState Shift, int X, int Y){
-      int startX=10;
-      int endX=20;
+      int startX=40;
+      int endX=40+81;
     if(Shift.Contains(ssLeft)){
         int moveX=X;
         volumeBar->Left += moveX;
-        if (volumeBar->Left < 10*startX){
-            volumeBar->Left=10*startX;
-        }else if (volumeBar->Left>10*endX){
-            volumeBar->Left=10*endX;
+        if (volumeBar->Left < startX){
+            volumeBar->Left=startX;
+        }else if (volumeBar->Left>endX){
+            volumeBar->Left=endX;
         }
 
         Label1->Caption = volumeBar->Left;
-        TrackBar->Position = (volumeBar->Left-startX)/(endX-startX);
+        TrackBar->Position = 10*(volumeBar->Left-startX)/(endX-startX);
     }
 }
 //---------------------------------------------------------------------------

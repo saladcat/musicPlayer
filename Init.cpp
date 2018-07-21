@@ -7,6 +7,7 @@
 #include "PlayList.h"
 #include "LrcWin.h"
 #include "SongList.h"
+#include "IOHelper.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -35,6 +36,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
     songListBtn[5]=btn_song5;
     playMode=3;
 }
+
 //---------------------------------------------------------------------------
 void TForm1::nextPlay(void){
     if (playMode ==3){
@@ -317,6 +319,47 @@ void __fastcall TForm1::rbtn_WinMinClick(TObject *Sender)
 
 void __fastcall TForm1::rbtn_WinCloseClick(TObject *Sender)
 {
+    IOHelper savePathName;
+    IOHelper saveFileName;
+    IOHelper saveSongListName;
+    AnsiString str=Application->ExeName;
+    int end=str.LastDelimiter("\\");
+    str=str.SubString(0,end);
+    savePathName.finderName = str+"data\\";
+    saveFileName.finderName = str+"data\\";
+    saveSongListName.finderName = str+"data\\";
+    savePathName.fileName = "pathName.dat";
+    saveFileName.fileName = "SongName.dat";
+    saveSongListName.fileName = "SongListName.dat";
+    savePathName.open(SAVE);
+    saveFileName.open(SAVE);
+    saveSongListName.open(SAVE);
+    // SongPathName and FileName
+    map<AnsiString,AnsiString>::iterator item0 =fileName2PathName.begin();
+    while (item0!=fileName2PathName.end()){
+        saveFileName.save(item0->first);
+        savePathName.save(item0->second);
+        item0++;
+    }
+    // SongListName
+    map<AnsiString,SongList*>::iterator item1 = listName2SongList.begin();
+    while (item1!=listName2SongList.end()){
+        // songs of SongList
+        IOHelper saveSongListSongs;
+        saveSongListSongs.finderName = str+"data\\songList\\";
+        saveSongListSongs.fileName=item1->first+".dat";
+        saveSongListSongs.open(SAVE);
+        SongList *songList=item1->second;
+        for (int i=0;i<songList->songs.size();i++){
+            saveSongListSongs.save(songList->songs[i]);
+        }
+        saveSongListSongs.close();
+        saveSongListName.save(item1->first);
+        item1++;
+    }
+    savePathName.close();
+    saveFileName.close();
+    saveSongListName.close();
     this->Close();
 }
 //---------------------------------------------------------------------------
@@ -959,6 +1002,19 @@ void __fastcall TForm1::addMyFav6Click(TObject *Sender)
         Form1->listName2SongList["myFavorite"]->songs.erase(Form1->listName2SongList["myFavorite"]->songs.begin()+index);
     }
     Form1->listName2SongList["myFavorite"]->songs.push_back(curMusicPathName);
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::btn_FigureClick(TObject *Sender)
+{
+    // doing nothing     
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::btn_DressTransClick(TObject *Sender)
+{
+    //do nothing    
 }
 //---------------------------------------------------------------------------
 

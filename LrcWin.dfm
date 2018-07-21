@@ -1,6 +1,6 @@
 object Form3: TForm3
-  Left = 657
-  Top = 72
+  Left = 445
+  Top = 117
   Width = 1355
   Height = 855
   AutoSize = True
@@ -735,7 +735,7 @@ object Form3: TForm3
   object txt_SongName: TLabel
     Left = 472
     Top = 78
-    Width = 433
+    Width = 174
     Height = 32
     Caption = 'txt_SongName'
     Font.Charset = ANSI_CHARSET
@@ -916,6 +916,7 @@ object Form3: TForm3
     Height = 60
     Caption = 'btn_Figure'
     TabOrder = 2
+    OnClick = btn_FigureClick
   end
   object btn_DressTrans: TButton
     Left = 439
@@ -924,6 +925,7 @@ object Form3: TForm3
     Height = 30
     Caption = 'btn_DressTrans'
     TabOrder = 3
+    OnClick = btn_DressTransClick
   end
   object grp_ConWins: TGroupBox
     Left = 608
@@ -970,6 +972,7 @@ object Form3: TForm3
       Top = 40
       Width = 73
       Height = 65
+      OnClick = btn_openLrcClick
     end
     object btn_openPlayList: TSpeedButton
       Left = 680
@@ -1116,6 +1119,7 @@ object Form3: TForm3
       Height = 40
       Caption = 'btn_Play'
       TabOrder = 0
+      OnClick = btn_PlayClick
     end
     object btn_Next: TButton
       Left = 121
@@ -1124,6 +1128,7 @@ object Form3: TForm3
       Height = 40
       Caption = 'btn_Next'
       TabOrder = 1
+      OnClick = btn_NextClick
     end
     object btn_Pre: TButton
       Left = 18
@@ -1132,6 +1137,7 @@ object Form3: TForm3
       Height = 40
       Caption = 'btn_Pre'
       TabOrder = 2
+      OnClick = btn_PreClick
     end
     object TrackBar: TTrackBar
       Left = 24

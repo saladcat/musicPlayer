@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 2291
-  Top = 21
+  Left = 2304
+  Top = 19
   Width = 967
   Height = 857
   AutoSize = True
@@ -109,6 +109,7 @@ object Form1: TForm1
     Height = 60
     Caption = 'btn_Figure'
     TabOrder = 2
+    OnClick = btn_FigureClick
   end
   object grp_Init_MsList: TGroupBox
     Left = 216
@@ -241,6 +242,7 @@ object Form1: TForm1
     Height = 30
     Caption = 'btn_DressTrans'
     TabOrder = 7
+    OnClick = btn_DressTransClick
   end
   object grp_MsCon: TGroupBox
     Left = 0

@@ -181,6 +181,8 @@ __published:	// IDE-managed Components
     void __fastcall addMyFav4Click(TObject *Sender);
     void __fastcall addMyFav5Click(TObject *Sender);
     void __fastcall addMyFav6Click(TObject *Sender);
+    void __fastcall btn_FigureClick(TObject *Sender);
+    void __fastcall btn_DressTransClick(TObject *Sender);
 private:	// User declarations
 
 public:		// User declarations
@@ -188,7 +190,7 @@ public:		// User declarations
     void nextPlay(void);
     LrcHelper* musicLrc;
     __fastcall TForm1(TComponent* Owner);
-        map<AnsiString,int> cntMusic;
+    map<AnsiString,int> cntMusic;
     map<AnsiString,AnsiString> fileName2PathName;
     //deque<AnsiString> msHistory;
     void push_front(AnsiString);

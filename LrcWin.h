@@ -70,6 +70,12 @@ __published:	// IDE-managed Components
     void __fastcall btn_labelClick(TObject *Sender);
     void __fastcall btn_highLightClick(TObject *Sender);
     void __fastcall btn_openPlayListClick(TObject *Sender);
+    void __fastcall btn_openLrcClick(TObject *Sender);
+    void __fastcall btn_PreClick(TObject *Sender);
+    void __fastcall btn_PlayClick(TObject *Sender);
+    void __fastcall btn_NextClick(TObject *Sender);
+    void __fastcall btn_FigureClick(TObject *Sender);
+    void __fastcall btn_DressTransClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
     __fastcall TForm3(TComponent* Owner);

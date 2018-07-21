@@ -179,3 +179,39 @@ void __fastcall TForm3::btn_openPlayListClick(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
+void __fastcall TForm3::btn_openLrcClick(TObject *Sender)
+{
+    Form1->btn_openLrcClick(Sender);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::btn_PreClick(TObject *Sender)
+{
+    Form1->btn_PreClick(Sender);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::btn_PlayClick(TObject *Sender)
+{
+    Form1->btn_PlayClick(Sender);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::btn_NextClick(TObject *Sender)
+{
+    Form1->btn_NextClick(Sender);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::btn_FigureClick(TObject *Sender)
+{
+    Form1->btn_FigureClick(Sender);    
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::btn_DressTransClick(TObject *Sender)
+{
+    Form1->btn_DressTransClick(Sender);    
+}
+//---------------------------------------------------------------------------
+

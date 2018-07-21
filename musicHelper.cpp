@@ -69,4 +69,6 @@ AnsiString double2String (double number){
     return res;
 }
 
+AnsiString getDataPath(AnsiString str){
+}
 

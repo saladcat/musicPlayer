@@ -61,7 +61,7 @@ void push_song(AnsiString songListName,AnsiString pathName){
 
 }
 AnsiString double2String (double number){
-    sstream os;
+    stringstream os;
     string tem;
     os << number ;
     os >> tem;
@@ -69,4 +69,10 @@ AnsiString double2String (double number){
     return res;
 }
 
+AnsiString getDataPath(AnsiString str){
+    AnsiString str=Application->ExeName;
+    int end=str.LastDelimiter("\\");
+    str=str.SubString(0,end);
+    return (str+"data\\"+str);
+}
 

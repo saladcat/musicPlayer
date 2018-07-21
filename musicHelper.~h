@@ -31,5 +31,6 @@ AnsiString str2Ansi(string str);
 string ansi2Str(AnsiString str);
 void push_song(AnsiString songListName,AnsiString pathName);
 AnsiString double2String (double number);
+AnsiString getDataPath(AnsiString str);
 //---------------------------------------------------------------------------
 #endif

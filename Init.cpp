@@ -33,10 +33,14 @@ __fastcall TForm1::TForm1(TComponent* Owner)
     songListBtn[3]=btn_song3;
     songListBtn[4]=btn_song4;
     songListBtn[5]=btn_song5;
-
+    playMode=3;
 }
 //---------------------------------------------------------------------------
-
+void TForm1::nextPlay(void){
+    if (playMode ==3){
+        
+    }
+}
 
 
 
@@ -64,12 +68,17 @@ void TForm1::playMusic(AnsiString pathName){
     MediaPlayer->Open();
     MediaPlayer->Play();
     playingSongName->Caption = takeFileName(pathName);
-
+    //高潮模式
+    /*Song *curSong = pathName2Song[Form1->MediaPlayer->FileName];
+    if (playMode ==3&& curSong->highLight[0]!=-1 && curSong->highLight[1] !=-1){
+        MediaPlayer->Position = 1000*curSong->highLight[0];
+    } */
     delete musicLrc;
     musicLrc=NULL;
     musicLrc= new LrcHelper(pathName);
     musicLrc->prtLrc(lrcTimer);
     Form3->txt_SongName->Caption = takeFileName(MediaPlayer->FileName);
+    Form3->list_Label->Clear();
     //dsadsadas
 }
 void TForm1::push_front(AnsiString str){
@@ -94,17 +103,14 @@ void __fastcall TForm1::lrcTimerTimer(TObject *Sender)
     double lrcTime = nowTime + musicLrc->offset;
 
 
-    int leftPos=128;
-    int rightPos=128+287;
+    int leftPos=24;
+    int rightPos=272;
     int curPos=nowTime/songLength*(rightPos-leftPos)+leftPos;
     processBarbar->Left=curPos;
+    processBarPro->Width=curPos-processBarPro->Left;
     //播放歌词
     if (musicLrc->isFileExist){
-        if (lrcTime > musicLrc->lrc[musicLrc->index].time) {
-            Form3->lrcList->Lines->Add(musicLrc->lrc[musicLrc->index].text);
-            musicLrc->index++;
-        }
-        int index=-1;
+        int index=musicLrc->lrc.size()-1;
         for (int i=0;i < musicLrc->lrc.size();i++){
             if (lrcTime <= musicLrc->lrc[i].time){
                 index=i-1;
@@ -118,7 +124,13 @@ void __fastcall TForm1::lrcTimerTimer(TObject *Sender)
                 lrcWord[i]->Caption = musicLrc->lrc[index-3+i].text;
             }
         }
+    }else{
+        for (int i=0;i<7;i++){
+            lrcWord[i]->Caption = (AnsiString)" ";
+        }
+        lrcWord[3]->Caption = (AnsiString)"No .Lrc File";
     }
+    Song *curSong = pathName2Song[Form1->MediaPlayer->FileName];
     if (MediaPlayer->Position>=MediaPlayer->Length){
         lrcTimer->Enabled=false;
         musicLrc->index=0;
@@ -146,6 +158,8 @@ void __fastcall TForm1::btn_openLrcClick(TObject *Sender)
         Form3->Show();
         Form1->Hide();
     } else{
+        Form1->Left=Form3->Left;
+        Form1->Top=Form3->Top;
         Form3->Hide();
         Form1->Show();
     }
@@ -170,7 +184,13 @@ TShiftState Shift, int X, int Y){
         if(Shift.Contains(ssLeft)){
             int moveX=X;
             processBarbar->Left += moveX;
-            MediaPlayer->Position=MediaPlayer->Length*(processBarbar->Left-128)/(128+287-128);
+            int pos = MediaPlayer->Length*(processBarbar->Left-24)/(272-24);
+
+            if (pos>=MediaPlayer->Length){
+                MediaPlayer->Position=MediaPlayer->Length;
+            }else{
+                MediaPlayer->Position=pos;
+            }
             MediaPlayer->Play();
             if(moveX<0){
                 musicLrc->index=0;
@@ -204,7 +224,9 @@ void __fastcall TForm1::btn_LocalMsClick(TObject *Sender)
             Song *ptr = new Song(song);
             pathName2Song[song]=ptr;
         }
-    }    
+        playMusic(song);
+    }
+
 }
 //---------------------------------------------------------------------------
 
@@ -264,8 +286,9 @@ void __fastcall TForm1::TrackBarChange(TObject *Sender)
 
 void __fastcall TForm1::volumeBarMouseMove(TObject *Sender,
       TShiftState Shift, int X, int Y){
-      int startX=40;
-      int endX=40+81;
+      int startX=33;
+      int endX=105;
+
     if(Shift.Contains(ssLeft)){
         int moveX=X;
         volumeBar->Left += moveX;
@@ -274,6 +297,7 @@ void __fastcall TForm1::volumeBarMouseMove(TObject *Sender,
         }else if (volumeBar->Left>endX){
             volumeBar->Left=endX;
         }
+        volumeBarPro->Width=volumeBar->Left-volumeBarPro->Left;
         TrackBar->Position = 10*(volumeBar->Left-startX)/(endX-startX);
     }
 }
@@ -481,9 +505,19 @@ void __fastcall TForm1::btn_PlaySelctClick(TObject *Sender)
     map<AnsiString,int>::iterator item = selectOn.begin();
     while (item!=selectOn.end()){
         if (item->second > 0){
-            playMusic(item->first);
+            AnsiString song = item->first;
+            if (cntMusic[song] == 0){
+                Form2->playListBox->Items->Add(takeFileName(song));
+                cntMusic[song]++;
+                fileName2PathName[takeFileName(song)] = song;
+                Song *ptr = new Song(song);
+                pathName2Song[song]=ptr;
+            }
+            playMusic(song);
         }
+        item++;
     }
+
     selectOn.clear();
 }
 //---------------------------------------------------------------------------
@@ -496,7 +530,7 @@ void __fastcall TForm1::btn_delSongListClick(TObject *Sender)
         if (item->second > 0){
             int index=ptr->getIndex(item->first);
             if (index!=-1){
-                ptr->songs.erase(ptr->songs.begin());
+                ptr->songs.erase(ptr->songs.begin()+index);
             }
         }
         item++;
@@ -648,4 +682,283 @@ void __fastcall TForm1::btn_AlarmMsClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+
+
+
+
+
+
+
+
+void __fastcall TForm1::playMusic1Click(TObject *Sender)
+{
+    SongList* ptr = listName2SongList[nowOpenListName];
+    AnsiString song = ptr->songs[songListPage*6+0];
+    if (cntMusic[song] == 0){
+        Form2->playListBox->Items->Add(takeFileName(song));
+        cntMusic[song]++;
+        fileName2PathName[takeFileName(song)] = song;
+        Song *ptr = new Song(song);
+        pathName2Song[song]=ptr;
+    }
+    playMusic(song);    
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TForm1::playMusic2Click(TObject *Sender)
+{
+    SongList* ptr = listName2SongList[nowOpenListName];
+    AnsiString song = ptr->songs[songListPage*6+1];
+    if (cntMusic[song] == 0){
+        Form2->playListBox->Items->Add(takeFileName(song));
+        cntMusic[song]++;
+        fileName2PathName[takeFileName(song)] = song;
+        Song *ptr = new Song(song);
+        pathName2Song[song]=ptr;
+    }
+    playMusic(song);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::playMusic3Click(TObject *Sender)
+{
+    SongList* ptr = listName2SongList[nowOpenListName];
+    AnsiString song = ptr->songs[songListPage*6+2];
+    if (cntMusic[song] == 0){
+        Form2->playListBox->Items->Add(takeFileName(song));
+        cntMusic[song]++;
+        fileName2PathName[takeFileName(song)] = song;
+        Song *ptr = new Song(song);
+        pathName2Song[song]=ptr;
+    }
+    playMusic(song);    
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::playMusic4Click(TObject *Sender)
+{
+    SongList* ptr = listName2SongList[nowOpenListName];
+    AnsiString song = ptr->songs[songListPage*6+3];
+    if (cntMusic[song] == 0){
+        Form2->playListBox->Items->Add(takeFileName(song));
+        cntMusic[song]++;
+        fileName2PathName[takeFileName(song)] = song;
+        Song *ptr = new Song(song);
+        pathName2Song[song]=ptr;
+    }
+    playMusic(song);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::playMusic5Click(TObject *Sender)
+{
+    SongList* ptr = listName2SongList[nowOpenListName];
+    AnsiString song = ptr->songs[songListPage*6+4];
+    if (cntMusic[song] == 0){
+        Form2->playListBox->Items->Add(takeFileName(song));
+        cntMusic[song]++;
+        fileName2PathName[takeFileName(song)] = song;
+        Song *ptr = new Song(song);
+        pathName2Song[song]=ptr;
+    }
+    playMusic(song);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::playMusic6Click(TObject *Sender)
+{
+    SongList* ptr = listName2SongList[nowOpenListName];
+    AnsiString song = ptr->songs[songListPage*6+5];
+    if (cntMusic[song] == 0){
+        Form2->playListBox->Items->Add(takeFileName(song));
+        cntMusic[song]++;
+        fileName2PathName[takeFileName(song)] = song;
+        Song *ptr = new Song(song);
+        pathName2Song[song]=ptr;
+    }
+    playMusic(song);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::del1Click(TObject *Sender)
+{
+    SongList *ptr = listName2SongList[nowOpenListName];
+    AnsiString song = ptr->songs[songListPage*6+0];
+    int index=ptr->getIndex(song);
+    if (index!=-1){
+        ptr->songs.erase(ptr->songs.begin()+index);
+    }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::del2Click(TObject *Sender)
+{
+    SongList *ptr = listName2SongList[nowOpenListName];
+    AnsiString song = ptr->songs[songListPage*6+1];
+    int index=ptr->getIndex(song);
+    if (index!=-1){
+        ptr->songs.erase(ptr->songs.begin()+index);
+    }    
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::del3Click(TObject *Sender)
+{
+    SongList *ptr = listName2SongList[nowOpenListName];
+    AnsiString song = ptr->songs[songListPage*6+2];
+    int index=ptr->getIndex(song);
+    if (index!=-1){
+        ptr->songs.erase(ptr->songs.begin()+index);
+    }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::del4Click(TObject *Sender)
+{
+    SongList *ptr = listName2SongList[nowOpenListName];
+    AnsiString song = ptr->songs[songListPage*6+3];
+    int index=ptr->getIndex(song);
+    if (index!=-1){
+        ptr->songs.erase(ptr->songs.begin()+index);
+    }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::del5Click(TObject *Sender)
+{
+    SongList *ptr = listName2SongList[nowOpenListName];
+    AnsiString song = ptr->songs[songListPage*6+4];
+    int index=ptr->getIndex(song);
+    if (index!=-1){
+        ptr->songs.erase(ptr->songs.begin()+index);
+    }    
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::del6Click(TObject *Sender)
+{
+    SongList *ptr = listName2SongList[nowOpenListName];
+    AnsiString song = ptr->songs[songListPage*6+5];
+    int index=ptr->getIndex(song);
+    if (index!=-1){
+        ptr->songs.erase(ptr->songs.begin()+index);
+    }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::addMyFav1Click(TObject *Sender)
+{
+    SongList *ptr = listName2SongList[nowOpenListName];
+    AnsiString curMusicPathName = ptr->songs[songListPage*6+0];
+    bool flag=false;
+    int index=0;
+    for (int i=0;i< Form1->listName2SongList["myFavorite"]->songs.size();i++){
+        if (curMusicPathName==Form1->listName2SongList["myFavorite"]->songs[i]){
+            flag=true;
+            index=i;
+        }
+    }
+    if (flag==true){
+        Form1->listName2SongList["myFavorite"]->songs.erase(Form1->listName2SongList["myFavorite"]->songs.begin()+index);
+    }
+    Form1->listName2SongList["myFavorite"]->songs.push_back(curMusicPathName);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::addMyFav2Click(TObject *Sender)
+{
+    SongList *ptr = listName2SongList[nowOpenListName];
+    AnsiString curMusicPathName = ptr->songs[songListPage*6+1];
+    bool flag=false;
+    int index=0;
+    for (int i=0;i< Form1->listName2SongList["myFavorite"]->songs.size();i++){
+        if (curMusicPathName==Form1->listName2SongList["myFavorite"]->songs[i]){
+            flag=true;
+            index=i;
+        }
+    }
+    if (flag==true){
+        Form1->listName2SongList["myFavorite"]->songs.erase(Form1->listName2SongList["myFavorite"]->songs.begin()+index);
+    }
+    Form1->listName2SongList["myFavorite"]->songs.push_back(curMusicPathName);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::addMyFav3Click(TObject *Sender)
+{
+    SongList *ptr = listName2SongList[nowOpenListName];
+    AnsiString curMusicPathName = ptr->songs[songListPage*6+2];
+    bool flag=false;
+    int index=0;
+    for (int i=0;i< Form1->listName2SongList["myFavorite"]->songs.size();i++){
+        if (curMusicPathName==Form1->listName2SongList["myFavorite"]->songs[i]){
+            flag=true;
+            index=i;
+        }
+    }
+    if (flag==true){
+        Form1->listName2SongList["myFavorite"]->songs.erase(Form1->listName2SongList["myFavorite"]->songs.begin()+index);
+    }
+    Form1->listName2SongList["myFavorite"]->songs.push_back(curMusicPathName);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::addMyFav4Click(TObject *Sender)
+{
+    SongList *ptr = listName2SongList[nowOpenListName];
+    AnsiString curMusicPathName = ptr->songs[songListPage*6+3];
+    bool flag=false;
+    int index=0;
+    for (int i=0;i< Form1->listName2SongList["myFavorite"]->songs.size();i++){
+        if (curMusicPathName==Form1->listName2SongList["myFavorite"]->songs[i]){
+            flag=true;
+            index=i;
+        }
+    }
+    if (flag==true){
+        Form1->listName2SongList["myFavorite"]->songs.erase(Form1->listName2SongList["myFavorite"]->songs.begin()+index);
+    }
+    Form1->listName2SongList["myFavorite"]->songs.push_back(curMusicPathName);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::addMyFav5Click(TObject *Sender)
+{
+    SongList *ptr = listName2SongList[nowOpenListName];
+    AnsiString curMusicPathName = ptr->songs[songListPage*6+4];
+    bool flag=false;
+    int index=0;
+    for (int i=0;i< Form1->listName2SongList["myFavorite"]->songs.size();i++){
+        if (curMusicPathName==Form1->listName2SongList["myFavorite"]->songs[i]){
+            flag=true;
+            index=i;
+        }
+    }
+    if (flag==true){
+        Form1->listName2SongList["myFavorite"]->songs.erase(Form1->listName2SongList["myFavorite"]->songs.begin()+index);
+    }
+    Form1->listName2SongList["myFavorite"]->songs.push_back(curMusicPathName);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::addMyFav6Click(TObject *Sender)
+{
+    SongList *ptr = listName2SongList[nowOpenListName];
+    AnsiString curMusicPathName = ptr->songs[songListPage*6+5];
+    bool flag=false;
+    int index=0;
+    for (int i=0;i< Form1->listName2SongList["myFavorite"]->songs.size();i++){
+        if (curMusicPathName==Form1->listName2SongList["myFavorite"]->songs[i]){
+            flag=true;
+            index=i;
+        }
+    }
+    if (flag==true){
+        Form1->listName2SongList["myFavorite"]->songs.erase(Form1->listName2SongList["myFavorite"]->songs.begin()+index);
+    }
+    Form1->listName2SongList["myFavorite"]->songs.push_back(curMusicPathName);
+}
+//---------------------------------------------------------------------------
 

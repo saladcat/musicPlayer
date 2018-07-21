@@ -45,7 +45,9 @@ void __fastcall TForm2::playClick(TObject *Sender)
 
 void __fastcall TForm2::delClick(TObject *Sender)
 {
+    Form1->cntMusic[Form1->fileName2PathName[playListBox->Items->Strings[playListBox->ItemIndex]]]--;
     playListBox->Items->Delete(playListBox->ItemIndex);
+
 }
 //---------------------------------------------------------------------------
 
@@ -53,7 +55,9 @@ void __fastcall TForm2::favoriteClick(TObject *Sender)
 {
     AnsiString pathName = Form1->fileName2PathName[playListBox->Items->Strings[playListBox->ItemIndex]];
     push_song("myFavorite",pathName);
+    
 }
 //---------------------------------------------------------------------------
+
 
 

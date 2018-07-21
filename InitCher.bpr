@@ -5,7 +5,7 @@
     <VERSION value="BCB.06.00"/>
     <PROJECT value="InitCher.exe"/>
     <OBJFILES value="InitCher.obj Init.obj SongList.obj Song.obj musicHelper.obj LrcHelper.obj 
-      PlayList.obj LrcWin.obj"/>
+      PlayList.obj LrcWin.obj pic\IOHelper.obj"/>
     <RESFILES value="InitCher.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -21,7 +21,7 @@
       inetdbbde.bpi inetdbxpress.bpi inetdb.bpi nmfast.bpi webdsnap.bpi 
       bcbie.bpi websnap.bpi soaprtl.bpi dclocx.bpi dbexpress.bpi dbxcds.bpi 
       indy.bpi bcb2kaxserver.bpi"/>
-    <PATHCPP value=".;"/>
+    <PATHCPP value=".;pic"/>
     <PATHPAS value=".;"/>
     <PATHRC value=".;"/>
     <PATHASM value=".;"/>
@@ -31,13 +31,13 @@
     <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="_RTLDLL;NO_STRICT;USEPACKAGES"/>
     <MAINSOURCE value="InitCher.cpp"/>
-    <INCLUDEPATH value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Projects&quot;;C:\Users\Administrator\Desktop\FirstInit;$(BCB)\include;$(BCB)\include\vcl"/>
-    <LIBPATH value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Projects&quot;;C:\Users\Administrator\Desktop\FirstInit;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <INCLUDEPATH value="pic;&quot;C:\Program Files (x86)\Borland\CBuilder6\Projects&quot;;C:\Users\Administrator\Desktop\FirstInit;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="pic;&quot;C:\Program Files (x86)\Borland\CBuilder6\Projects&quot;;C:\Users\Administrator\Desktop\FirstInit;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
     <OTHERFILES value=""/>
   </MACROS>
   <OPTIONS>
-    <IDLCFLAGS value="-I&quot;C:\Program Files (x86)\Borland\CBuilder6\Projects&quot; 
+    <IDLCFLAGS value="-Ipic -I&quot;C:\Program Files (x86)\Borland\CBuilder6\Projects&quot; 
       -IC:\Users\Administrator\Desktop\FirstInit -I$(BCB)\include 
       -I$(BCB)\include\vcl -src_suffix cpp -D_DEBUG -boa"/>
     <CFLAG1 value="-Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -c 
@@ -64,6 +64,7 @@
       <FILE FILENAME="LrcHelper.cpp" FORMNAME="" UNITNAME="LrcHelper" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="PlayList.cpp" FORMNAME="Form2" UNITNAME="PlayList" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="LrcWin.cpp" FORMNAME="Form3" UNITNAME="LrcWin" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="pic\IOHelper.cpp" FORMNAME="" UNITNAME="IOHelper" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

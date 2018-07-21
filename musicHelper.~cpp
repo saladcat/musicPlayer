@@ -57,8 +57,16 @@ void push_song(AnsiString songListName,AnsiString pathName){
     if (flag==true){
         Form1->listName2SongList[songListName]->songs.erase(Form1->listName2SongList[songListName]->songs.begin()+index);
     }
-    Form1->listName2SongList[songListName]->songs.push_back(nowPlayMusicPathName);
+    Form1->listName2SongList[songListName]->songs.push_back(pathName);
 
+}
+AnsiString double2String (double number){
+    sstream os;
+    string tem;
+    os << number ;
+    os >> tem;
+    AnsiString res = tem.c_str();
+    return res;
 }
 
 

@@ -15,6 +15,7 @@ public:
     AnsiString pathName;
     vector<double> highLight;
     vector<int> mood;
+    deque<AnsiString> labels;
     double offset;    
 private:
 

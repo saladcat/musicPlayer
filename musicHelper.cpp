@@ -60,5 +60,13 @@ void push_song(AnsiString songListName,AnsiString pathName){
     Form1->listName2SongList[songListName]->songs.push_back(pathName);
 
 }
+AnsiString double2String (double number){
+    stringstream os;
+    string tem;
+    os << number ;
+    os >> tem;
+    AnsiString res = tem.c_str();
+    return res;
+}
 
 

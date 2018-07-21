@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 2116
-  Top = 11
+  Left = 2291
+  Top = 21
   Width = 967
   Height = 857
   AutoSize = True
@@ -60,15 +60,15 @@ object Form1: TForm1
     end
     object btn_MoodMs: TButton
       Left = 20
-      Top = 189
+      Top = 197
       Width = 93
       Height = 36
       Caption = 'btn_MoodMs'
       TabOrder = 2
     end
     object btn_AlarmMs: TButton
-      Left = 20
-      Top = 246
+      Left = 28
+      Top = 254
       Width = 92
       Height = 31
       Caption = 'btn_AlarmMs'
@@ -93,7 +93,7 @@ object Form1: TForm1
     Caption = 'grp_MsList'
     TabOrder = 1
     object songListList: TListBox
-      Left = 8
+      Left = 16
       Top = 24
       Width = 145
       Height = 185
@@ -249,25 +249,6 @@ object Form1: TForm1
     Height = 129
     Caption = 'grp_MsCon'
     TabOrder = 8
-    object volumeBar: TImage
-      Left = 121
-      Top = 96
-      Width = 5
-      Height = 14
-      AutoSize = True
-      Picture.Data = {
-        07544269746D617016010000424D160100000000000036000000280000000500
-        00000E0000000100180000000000E0000000120B0000120B0000000000000000
-        00003B3228322B22322B22312A213C322800332D229E958C898073A0968C302B
-        2200312A217E756C5E55487C736A322B2200322B227069604E453B706960322B
-        2200302B22655D5641382E645C55322B22002F2A215B554E352F245B554E322B
-        2200302B2257514A312B2057514A322B2200302B225A544D352F245A544D312C
-        2300302B22625C553E382D625C55302B22002F2C246F685F51443C71685E2F2C
-        2400312A217D746A5D53497B756A322C2100332D22897F756D6157887E74332D
-        2200342B21A49B918F857BA39A90342B22003A3429322C21312A21302B223D34
-        2AFF}
-      OnMouseMove = volumeBarMouseMove
-    end
     object Label1: TLabel
       Left = 152
       Top = 64
@@ -348,39 +329,129 @@ object Form1: TForm1
       OnClick = btn_openPlayListClick
     end
     object btn_openLrc: TSpeedButton
-      Left = 24
-      Top = 32
+      Left = 8
+      Top = 40
       Width = 73
       Height = 65
       OnClick = btn_openLrcClick
     end
-    object processBarbar: TImage
-      Left = 128
-      Top = 72
-      Width = 5
-      Height = 14
-      AutoSize = True
-      Picture.Data = {
-        07544269746D617016010000424D160100000000000036000000280000000500
-        00000E0000000100180000000000E0000000120B0000120B0000000000000000
-        00003B3228322B22322B22312A213C322800332D229E958C898073A0968C302B
-        2200312A217E756C5E55487C736A322B2200322B227069604E453B706960322B
-        2200302B22655D5641382E645C55322B22002F2A215B554E352F245B554E322B
-        2200302B2257514A312B2057514A322B2200302B225A544D352F245A544D312C
-        2300302B22625C553E382D625C55302B22002F2C246F685F51443C71685E2F2C
-        2400312A217D746A5D53497B756A322C2100332D22897F756D6157887E74332D
-        2200342B21A49B918F857BA39A90342B22003A3429322C21312A21302B223D34
-        2AFF}
-      OnMouseMove = processBarbarMouseMove
-    end
-    object ProgressBar1: TProgressBar
-      Left = 128
-      Top = 49
-      Width = 287
-      Height = 21
-      Min = 0
-      Max = 100
+    object grp_processBar: TGroupBox
+      Left = 96
+      Top = 40
+      Width = 297
+      Height = 57
+      Caption = 'grp_processBar'
       TabOrder = 0
+      object processBarbar: TImage
+        Left = 24
+        Top = 27
+        Width = 5
+        Height = 14
+        AutoSize = True
+        Picture.Data = {
+          07544269746D617016010000424D160100000000000036000000280000000500
+          00000E0000000100180000000000E0000000120B0000120B0000000000000000
+          00003B3228322B22322B22312A213C322800332D229E958C898073A0968C302B
+          2200312A217E756C5E55487C736A322B2200322B227069604E453B706960322B
+          2200302B22655D5641382E645C55322B22002F2A215B554E352F245B554E322B
+          2200302B2257514A312B2057514A322B2200302B225A544D352F245A544D312C
+          2300302B22625C553E382D625C55302B22002F2C246F685F51443C71685E2F2C
+          2400312A217D746A5D53497B756A322C2100332D22897F756D6157887E74332D
+          2200342B21A49B918F857BA39A90342B22003A3429322C21312A21302B223D34
+          2AFF}
+        OnMouseMove = processBarbarMouseMove
+      end
+      object processBarPro: TImage
+        Left = 25
+        Top = 28
+        Width = 240
+        Height = 13
+        Picture.Data = {
+          0A544A504547496D6167650B030000FFD8FFE000104A46494600010101006000
+          600000FFDB004300080606070605080707070909080A0C140D0C0B0B0C191213
+          0F141D1A1F1E1D1A1C1C20242E2720222C231C1C2837292C30313434341F2739
+          3D38323C2E333432FFDB0043010909090C0B0C180D0D1832211C213232323232
+          3232323232323232323232323232323232323232323232323232323232323232
+          32323232323232323232323232FFC20011080028024103012200021101031101
+          FFC4001500010100000000000000000000000000000006FFC400160101010100
+          000000000000000000000000000102FFDA000C030100021003100000019E1720
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          000000000000000000000000000000000001FFC4001410010000000000000000
+          0000000000000080FFDA000801010001050236FF00FFC4001411010000000000
+          0000000000000000000060FFDA0008010301013F015FFFC40014110100000000
+          000000000000000000000060FFDA0008010201013F015FFFC400141001000000
+          00000000000000000000000080FFDA0008010100063F0236FF00FFC400141001
+          00000000000000000000000000000080FFDA0008010100013F2136FF00FFDA00
+          0C03010002000300000010FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF
+          00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF
+          00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF
+          00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF
+          00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF
+          00FF00FF00FF00FF00FF00FF00FF00FF00FF00FFC40014110100000000000000
+          000000000000000060FFDA0008010301013F105FFFC400141101000000000000
+          00000000000000000060FFDA0008010201013F105FFFC4001410010000000000
+          0000000000000000000080FFDA0008010100013F1036FF00FFD9}
+      end
+    end
+    object grp_volumeBar: TGroupBox
+      Left = 424
+      Top = 40
+      Width = 121
+      Height = 65
+      Caption = 'grp_volumeBar'
+      TabOrder = 1
+      object volumeBar: TImage
+        Left = 105
+        Top = 33
+        Width = 5
+        Height = 14
+        AutoSize = True
+        Picture.Data = {
+          07544269746D617016010000424D160100000000000036000000280000000500
+          00000E0000000100180000000000E0000000120B0000120B0000000000000000
+          00003B3228322B22322B22312A213C322800332D229E958C898073A0968C302B
+          2200312A217E756C5E55487C736A322B2200322B227069604E453B706960322B
+          2200302B22655D5641382E645C55322B22002F2A215B554E352F245B554E322B
+          2200302B2257514A312B2057514A322B2200302B225A544D352F245A544D312C
+          2300302B22625C553E382D625C55302B22002F2C246F685F51443C71685E2F2C
+          2400312A217D746A5D53497B756A322C2100332D22897F756D6157887E74332D
+          2200342B21A49B918F857BA39A90342B22003A3429322C21312A21302B223D34
+          2AFF}
+        OnMouseMove = volumeBarMouseMove
+      end
+      object volumeBarPro: TImage
+        Left = 33
+        Top = 34
+        Width = 72
+        Height = 13
+        Picture.Data = {
+          0A544A504547496D6167650B030000FFD8FFE000104A46494600010101006000
+          600000FFDB004300080606070605080707070909080A0C140D0C0B0B0C191213
+          0F141D1A1F1E1D1A1C1C20242E2720222C231C1C2837292C30313434341F2739
+          3D38323C2E333432FFDB0043010909090C0B0C180D0D1832211C213232323232
+          3232323232323232323232323232323232323232323232323232323232323232
+          32323232323232323232323232FFC20011080028024103012200021101031101
+          FFC4001500010100000000000000000000000000000006FFC400160101010100
+          000000000000000000000000000102FFDA000C030100021003100000019E1720
+          0000000000000000000000000000000000000000000000000000000000000000
+          0000000000000000000000000000000000000000000000000000000000000000
+          000000000000000000000000000000000001FFC4001410010000000000000000
+          0000000000000080FFDA000801010001050236FF00FFC4001411010000000000
+          0000000000000000000060FFDA0008010301013F015FFFC40014110100000000
+          000000000000000000000060FFDA0008010201013F015FFFC400141001000000
+          00000000000000000000000080FFDA0008010100063F0236FF00FFC400141001
+          00000000000000000000000000000080FFDA0008010100013F2136FF00FFDA00
+          0C03010002000300000010FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF
+          00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF
+          00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF
+          00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF
+          00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF
+          00FF00FF00FF00FF00FF00FF00FF00FF00FF00FFC40014110100000000000000
+          000000000000000060FFDA0008010301013F105FFFC400141101000000000000
+          00000000000000000060FFDA0008010201013F105FFFC4001410010000000000
+          0000000000000000000080FFDA0008010100013F1036FF00FFD9}
+      end
     end
   end
   object MediaPlayer: TMediaPlayer
@@ -457,6 +528,7 @@ object Form1: TForm1
         Top = 280
         Width = 25
         Height = 25
+        PopupMenu = PopupMenu6
         OnClick = btn_song5Click
       end
       object lb_song0: TLabel
@@ -471,6 +543,7 @@ object Form1: TForm1
         Top = 88
         Width = 25
         Height = 25
+        PopupMenu = PopupMenu4
         OnClick = btn_song1Click
       end
       object lb_song1: TLabel
@@ -485,6 +558,7 @@ object Form1: TForm1
         Top = 136
         Width = 25
         Height = 25
+        PopupMenu = PopupMenu3
         OnClick = btn_song2Click
       end
       object lb_song2: TLabel
@@ -499,6 +573,7 @@ object Form1: TForm1
         Top = 184
         Width = 25
         Height = 25
+        PopupMenu = PopupMenu2
         OnClick = btn_song3Click
       end
       object lb_song3: TLabel
@@ -513,6 +588,7 @@ object Form1: TForm1
         Top = 232
         Width = 25
         Height = 25
+        PopupMenu = PopupMenu1
         OnClick = btn_song4Click
       end
       object lb_song4: TLabel
@@ -527,6 +603,7 @@ object Form1: TForm1
         Top = 40
         Width = 25
         Height = 25
+        PopupMenu = PopupMenu5
         OnClick = btn_song0Click
       end
       object lb_song5: TLabel
@@ -584,5 +661,101 @@ object Form1: TForm1
     OnTimer = globle_timerTimer
     Left = 328
     Top = 72
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 368
+    Top = 480
+    object playMusic5: TMenuItem
+      Caption = 'playMusic'
+      OnClick = playMusic5Click
+    end
+    object addMyFav5: TMenuItem
+      Caption = 'addMyFav'
+      OnClick = addMyFav5Click
+    end
+    object del5: TMenuItem
+      Caption = 'del'
+      OnClick = del5Click
+    end
+  end
+  object PopupMenu2: TPopupMenu
+    Left = 368
+    Top = 432
+    object playMusic4: TMenuItem
+      Caption = 'playMusic'
+      OnClick = playMusic4Click
+    end
+    object addMyFav4: TMenuItem
+      Caption = 'addMyFav'
+      OnClick = addMyFav4Click
+    end
+    object del4: TMenuItem
+      Caption = 'del'
+      OnClick = del4Click
+    end
+  end
+  object PopupMenu3: TPopupMenu
+    Left = 368
+    Top = 384
+    object playMusic3: TMenuItem
+      Caption = 'playMusic'
+      OnClick = playMusic3Click
+    end
+    object addMyFav3: TMenuItem
+      Caption = 'addMyFav'
+      OnClick = addMyFav3Click
+    end
+    object del3: TMenuItem
+      Caption = 'del'
+      OnClick = del3Click
+    end
+  end
+  object PopupMenu4: TPopupMenu
+    Left = 368
+    Top = 336
+    object playMusic2: TMenuItem
+      Caption = 'playMusic'
+      OnClick = playMusic2Click
+    end
+    object addMyFav2: TMenuItem
+      Caption = 'addMyFav'
+      OnClick = addMyFav2Click
+    end
+    object del2: TMenuItem
+      Caption = 'del'
+      OnClick = del2Click
+    end
+  end
+  object PopupMenu5: TPopupMenu
+    Left = 368
+    Top = 296
+    object playMusic1: TMenuItem
+      Caption = 'playMusic'
+      OnClick = playMusic1Click
+    end
+    object addMyFav1: TMenuItem
+      Caption = 'addMyFav'
+      OnClick = addMyFav1Click
+    end
+    object del1: TMenuItem
+      Caption = 'del'
+      OnClick = del1Click
+    end
+  end
+  object PopupMenu6: TPopupMenu
+    Left = 368
+    Top = 528
+    object playMusic6: TMenuItem
+      Caption = 'playMusic'
+      OnClick = playMusic6Click
+    end
+    object addMyFav6: TMenuItem
+      Caption = 'addMyFav'
+      OnClick = addMyFav6Click
+    end
+    object del6: TMenuItem
+      Caption = 'del'
+      OnClick = del6Click
+    end
   end
 end

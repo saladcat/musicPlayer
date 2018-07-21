@@ -1,14 +1,6 @@
 //---------------------------------------------------------------------------
 
-
-#pragma hdrstop
-
-#include "Song.h"
-
+#ifndef IOHelperH
+#define IOHelperH
 //---------------------------------------------------------------------------
-
-#pragma package(smart_init)
-
-Song::Song(AnsiString pathName):highLight(2) {
-    this->pathName=pathName;
-}
+#endif

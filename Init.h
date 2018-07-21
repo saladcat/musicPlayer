@@ -16,6 +16,8 @@
 #include <CheckLst.hpp>
 #include <Grids.hpp>
 #include <ValEdit.hpp>
+#include <jpeg.hpp>
+#include <Menus.hpp>
 
 #include <algorithm>
 #include "musicHelper.h"
@@ -57,7 +59,6 @@ __published:	// IDE-managed Components
         TButton *btn_Next;
         TButton *btn_Pre;
         TGroupBox *grp_Playig;
-        TProgressBar *ProgressBar1;
     TOpenDialog *diaLoadMs;
     TMediaPlayer *MediaPlayer;
     TLabel *playingSongName;
@@ -101,6 +102,34 @@ __published:	// IDE-managed Components
     TSpeedButton *btn_SongListSearch;
     TSpeedButton *btn_selctAll;
     TListBox *songListList;
+    TGroupBox *grp_processBar;
+    TGroupBox *grp_volumeBar;
+    TImage *processBarPro;
+    TImage *volumeBarPro;
+    TPopupMenu *PopupMenu1;
+    TPopupMenu *PopupMenu2;
+    TPopupMenu *PopupMenu3;
+    TPopupMenu *PopupMenu4;
+    TPopupMenu *PopupMenu5;
+    TPopupMenu *PopupMenu6;
+    TMenuItem *playMusic1;
+    TMenuItem *addMyFav1;
+    TMenuItem *del1;
+    TMenuItem *playMusic2;
+    TMenuItem *addMyFav2;
+    TMenuItem *del2;
+    TMenuItem *playMusic3;
+    TMenuItem *addMyFav3;
+    TMenuItem *del3;
+    TMenuItem *playMusic4;
+    TMenuItem *addMyFav4;
+    TMenuItem *del4;
+    TMenuItem *playMusic5;
+    TMenuItem *addMyFav5;
+    TMenuItem *del5;
+    TMenuItem *playMusic6;
+    TMenuItem *addMyFav6;
+    TMenuItem *del6;
     void __fastcall btn_LoveMsClick(TObject *Sender);
     void __fastcall lrcTimerTimer(TObject *Sender);
     void __fastcall btn_openPlayListClick(TObject *Sender);
@@ -134,10 +163,29 @@ __published:	// IDE-managed Components
     void __fastcall songListListDblClick(TObject *Sender);
     void __fastcall btn_SongListSearchClick(TObject *Sender);
     void __fastcall btn_AlarmMsClick(TObject *Sender);
+    void __fastcall playMusic1Click(TObject *Sender);
+    void __fastcall playMusic2Click(TObject *Sender);
+    void __fastcall playMusic3Click(TObject *Sender);
+    void __fastcall playMusic4Click(TObject *Sender);
+    void __fastcall playMusic5Click(TObject *Sender);
+    void __fastcall playMusic6Click(TObject *Sender);
+    void __fastcall del1Click(TObject *Sender);
+    void __fastcall del2Click(TObject *Sender);
+    void __fastcall del3Click(TObject *Sender);
+    void __fastcall del4Click(TObject *Sender);
+    void __fastcall del5Click(TObject *Sender);
+    void __fastcall del6Click(TObject *Sender);
+    void __fastcall addMyFav1Click(TObject *Sender);
+    void __fastcall addMyFav2Click(TObject *Sender);
+    void __fastcall addMyFav3Click(TObject *Sender);
+    void __fastcall addMyFav4Click(TObject *Sender);
+    void __fastcall addMyFav5Click(TObject *Sender);
+    void __fastcall addMyFav6Click(TObject *Sender);
 private:	// User declarations
 
 public:		// User declarations
     void playMusic(AnsiString pathName);
+    void nextPlay(void);
     LrcHelper* musicLrc;
     __fastcall TForm1(TComponent* Owner);
         map<AnsiString,int> cntMusic;
@@ -157,6 +205,8 @@ public:		// User declarations
     double alarmEndTime;
     double alarmBeginTime;
     vector<TLabel* > lrcWord;
+    int playMode;
+
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm1 *Form1;
